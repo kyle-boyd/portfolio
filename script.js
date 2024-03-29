@@ -3,15 +3,14 @@ const handleIntersection = (entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('show');
-    } else {
-      entry.target.classList.remove('show'); // Remove the 'show' class when not intersecting
+      observer.unobserve(entry.target); // Stop observing once the element is visible
     }
   });
 };
 
 // Create a new Intersection Observer
 const observer = new IntersectionObserver(handleIntersection, {
-  threshold: 0.2 // Trigger when 20% of the element is visible
+  threshold: 0.3 // Trigger when 20% of the element is visible
 });
 
 // Get all sections
@@ -22,7 +21,6 @@ sections.forEach(section => {
   observer.observe(section);
 });
 
-
 $(document).ready(function() {
     $('#submitBtn').click(function(e) {
         e.preventDefault();
@@ -30,7 +28,7 @@ $(document).ready(function() {
         var correctPassword = "kyleboyd2024"; // Change this to your desired password
 
         if (enteredPassword === correctPassword) {
-            window.location.href = "protected_page.html";
+            window.location.href = "home.html";
         } else {
             $('#errorMsg').text("Incorrect password. Please try again.");
         }
