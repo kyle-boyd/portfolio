@@ -128,10 +128,10 @@ main {
 
 .section {
   width: 100%;
-  gap: 48px;
+  gap: clamp(1rem, 5.33vw + -0.33rem, 3rem);
   display: flex;
   flex-wrap: wrap;
-  padding: 96px 0;
+  padding: clamp(2rem, 10.67vw + -0.67rem, 6rem) 0;
   }
 
 .left-column {
@@ -208,6 +208,15 @@ main {
     gap: 8px;
     }
 }
+
+@media (max-width: 600px) {
+   .card{
+    flex: 0 0 100%; 
+    padding: 16px;
+    gap: 8px;
+    }
+}
+
 @media (max-width: 500px) {
     .fcards{
     gap: 12px;
@@ -308,8 +317,14 @@ footer {
     
 
 .hero {
-    width: 65%;
+    width: clamp(16.25rem, 68.89vw + 3.33rem, 55rem);
     padding: 0 0 12% 0;
+}
+
+@media (max-width: 600px) {
+    .fcards{
+    gap: 12px;
+    }
 }
 
 .about {
@@ -317,7 +332,7 @@ footer {
     flex: 1;
     gap: 16px;
     flex-direction: column;
-    width: 65%; 
+    width: clamp(16.25rem, 68.89vw + 3.33rem, 55rem); 
     justify-content: start;
     padding: 0 0 12% 0;
     margin-right: auto;
@@ -354,7 +369,7 @@ footer {
     flex: 1;
     gap: 16px;
     flex-direction: column;
-    width: 65%; 
+    width: clamp(16.25rem, 68.89vw + 3.33rem, 55rem); 
     padding: 0 0 10% 0;
 
 }
@@ -448,36 +463,34 @@ a:hover {
 
 /* fonts */
 .XXL { 
-	font-size: clamp(4rem, 10.67vw + 1.33rem, 8rem);
-	
-	font-weight: normal;
-	}
+font-size: clamp(4rem, 10.67vw + 1.33rem, 8rem);
+font-weight: normal;
+}
 .XL { 
-	font-size: clamp(2rem, 5.33vw + 0.67rem, 4rem);
-	font-weight: normal;
+font-size: clamp(2.5rem, 4vw + 1.5rem, 4rem);
+font-weight: normal;
 }
 .L { 
-font-size: clamp(1.5rem, 4vw + 0.5rem, 3rem);
+font-size: clamp(2rem, 2.67vw + 1.33rem, 3rem);
 font-weight: normal;
-
 }
 .M { 
-font-size: clamp(1rem, 2.67vw + 0.33rem, 2rem);
+font-size: clamp(1.5rem, 1.33vw + 1.17rem, 2rem);
 font-weight: normal;
 }
 .S { 
-font-size: clamp(0.875rem, 1.67vw + 0.46rem, 1.5rem);
+font-size: clamp(1.375rem, 0.33vw + 1.29rem, 1.5rem);
 font-weight: normal;
 }
 .XS { 
-font-size: clamp(0.75rem, 1.33vw + 0.42rem, 1.25rem);
+font-size: clamp(1.25rem, 0vw + 1.25rem, 1.25rem);
 font-weight: normal;
-line-height: 1.4;
 }
 .XXS { 
-font-size: clamp(0.625rem, 1vw + 0.38rem, 1rem);
+font-size: clamp(1rem, 0vw + 1rem, 1rem);
 font-weight: normal;
 }
+
 
 
 .boldtext {
