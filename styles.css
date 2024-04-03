@@ -18,18 +18,6 @@
     animation-iteration-count: 1; /* Run animation only once */
   }
 
-/* Hide sections by default */
-.animatesection {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-/* Show sections when they become visible */
-.animatesection.show {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 html {
   scroll-behavior: smooth;
@@ -55,6 +43,7 @@ body {
     font-optical-sizing: none;
   	font-weight: normal;
   	font-style: normal;
+  	line-height: 1.25;
     margin: 0;
     padding: 0;
     background-color: #FFFEFD;
@@ -449,8 +438,6 @@ button:hover {
 }
 
 a {
-   
-
     color: #2B2B2B;
     text-decoration: none;
     cursor: pointer;
@@ -459,6 +446,21 @@ a {
 a:hover {
     color: #7A7A7A;
 }
+
+
+/* Hide sections by default */
+.animatesection {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Show sections when they become visible */
+.animatesection.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 
 /* fonts */
@@ -485,6 +487,7 @@ font-weight: normal;
 .XS { 
 font-size: clamp(1.25rem, 0vw + 1.25rem, 1.25rem);
 font-weight: normal;
+line-height: 1.6;
 }
 .XXS { 
 font-size: clamp(1rem, 0vw + 1rem, 1rem);
