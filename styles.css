@@ -290,6 +290,9 @@ main {
 }
 
 
+.caption {
+    margin-top: 8px;
+}
 
 footer {
   display: flex;
