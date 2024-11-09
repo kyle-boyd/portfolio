@@ -24,7 +24,7 @@ sections.forEach(section => {
 });
 
 
-/*
+
  // Check if content is unlocked in localStorage
 let isContentUnlocked = localStorage.getItem('contentUnlocked') === 'true';
 
@@ -88,7 +88,6 @@ document.getElementById('password').addEventListener('keypress', function(event)
     }
 });
 
-*/
 
 // Check if the URL ends with '/'
 if (window.location.pathname.endsWith('/')) {
