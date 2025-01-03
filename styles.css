@@ -220,6 +220,13 @@ main {
 
 }
 
+.mainimageTransparent {
+  margin: 96px 0;
+  width: 100%;
+  border-radius: 8px;
+
+}
+
 .projdescription {
     padding: 40px 0;
 }
