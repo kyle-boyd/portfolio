@@ -30,7 +30,6 @@ html {
 
 
 
-
 /* Reset default margin and padding */
 * {
   margin: 0;
@@ -49,6 +48,8 @@ body {
     background-color: #FFFEFD;
     color: #2B2B2B;
     }
+
+
     
 
 .homecontainer {
@@ -229,6 +230,7 @@ main {
 
 .projdescription {
     padding: 40px 0;
+    line-height: 160%;
 }
 
 .projcard {
@@ -276,6 +278,7 @@ main {
 
 .projectDescription {
     margin-bottom: 24px;
+    
     
 }
 
@@ -456,6 +459,24 @@ a {
 a:hover {
     color: #7A7A7A;
 }
+
+
+.linkshow { 
+    color: #412E8B;
+    text-decoration: underline;
+    cursor: pointer; 
+}
+
+.linkshow:hover {
+  background-image: linear-gradient(0deg, #412E8B, #412E8B); /* No transparency */
+  color: #FFFEFD;
+  background-size:  auto 0%; /* Start with no highlight */
+  background-repeat: no-repeat; /* Prevent repeating */
+  animation: highlight .05s linear forwards; /* Forward fill mode to keep the end state */
+  text-decoration: none;
+  animation-iteration-count: 1; /* Run animation only once */
+}
+
 
 
 /* Hide sections by default */
