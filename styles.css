@@ -108,8 +108,7 @@ nav ul li:first-child {
   margin-left: 0;
 }
 
-nav ul li a {
-  }
+
 
 main {
   padding: 40px 0;
@@ -191,6 +190,40 @@ main {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.15); 
         
 }
+
+.workCard {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: flex-end; /* Push all content to the bottom */
+  align-items: center; /* Center content horizontally */
+  flex: 1;
+  gap: 16px; /* Adjust spacing between elements */
+  padding: 16px;
+
+}
+
+.workCard img {
+  max-width: 100%; /* Make the image responsive */
+  height: auto;
+}
+
+.workCard p {
+  margin: 0;
+  text-align: center; /* Explicitly center the text */
+}
+
+
+.flexItems {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 24px 0 48px 0;
+  gap: 16px;
+  width: 100%;
+}   
+
+
+
+
 @media (max-width: 1200px) {
    .card{
     flex: 0 0 48%; 
