@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Liquid Glass Cursor – Clean Edge</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    cursor: none;
+    background: linear-gradient(120deg, #f5f5f7, #e8e8ec);
+  }
+
+  .content {
+    padding: 80px;
+    max-width: 900px;
+  }
+
+  h1 {
+    font-size: 56px;
+    margin-bottom: 24px;
+  }
+
+  p {
+    font-size: 20px;
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .card {
+    height: 180px;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+
+  /* ------------------------------
+     Cursor container
+  -------------------------------*/
+  #cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90px;
+    height: 90px;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Perfect 1px outline */
+  #cursor::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(180, 180, 180, 0.95);
+    background: transparent;
+  }
+
+  /* Inner lens */
+  .lens {
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    backdrop-filter: saturate(135%) contrast(110%);
+    -webkit-backdrop-filter: saturate(135%) contrast(110%);
+
+    filter: url(#lens-distortion);
+    
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(255,255,255,0.35),
+      rgba(255,255,255,0.08) 60%,
+      rgba(255,255,255,0.03)
+    );
+  }
+</style>
+</head>
+
+<body>
+
+<div class="content">
+  <h1>Liquid Glass Cursor</h1>
+  <p>
+    The border remains perfectly crisp while the interior behaves like
+    a refractive glass lens. This avoids blur bleed and preserves edge clarity.
+  </p>
+
+  <div class="cards">
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+  </div>
+</div>
+
+<div id="cursor">
+  <div class="lens"></div>
+</div>
+
+<!-- SVG lens distortion -->
+<svg width="0" height="0">
+  <filter id="lens-distortion">
+    <feTurbulence
+      type="fractalNoise"
+      baseFrequency="0.012"
+      numOctaves="1"
+      result="noise" />
+    <feDisplacementMap
+      in="SourceGraphic"
+      in2="noise"
+      scale="10"
+      xChannelSelector="R"
+      yChannelSelector="G" />
+  </filter>
+</svg>
+
+<script>
+  const cursor = document.getElementById("cursor");
+
+  window.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
+</script>
+
+</body>
+</html>

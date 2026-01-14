@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0a0a0a;
+            cursor: none;
+            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        /* Custom cursor */
+        .cursor {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1000;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        border-radius 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                        transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .cursor.hovering-image {
+            width: 56px;
+            height: 56px;
+        }
+
+        .cursor.expanded {
+            width: 250px;
+            height: auto;
+            min-height: 60px;
+            border-radius: 24px;
+            padding: 12px 16px;
+        }
+
+        .cursor-text {
+            color: #0a0a0a;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+            line-height: 1.4;
+            pointer-events: none;
+            word-wrap: break-word;
+        }
+
+        .cursor.expanded .cursor-text {
+            opacity: 1;
+        }
+
+        /* Menu */
+        .menu {
+            position: fixed !important;
+            top: 16px !important;
+            left: 48px;
+            right: 48px;
+            width: calc(100% - 96px);
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 40px;
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(16px) saturate(140%);
+            -webkit-backdrop-filter: blur(16px) saturate(140%);
+            padding: 20px 40px;
+            border-radius: 20px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+            transform: translateZ(0);
+            will-change: transform;
+            pointer-events: auto;
+        }
+
+        .menu-item {
+            font-size: 24px;
+            color: #0a0a0a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: none;
+            position: relative;
+            padding: 10px 0;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+        }
+
+        /* Remove halos/lines around menu items */
+        .menu-item::after,
+        .menu-item::before {
+            content: none;
+        }
+
+        /* Base layout */
+        body {
+            min-height: 100vh;
+            background: #ffffff;
+            color: #111111;
+            cursor: none;
+            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            isolation: isolate;
+        }
+
+        /* Filter layer for morphing cursor + menu */
+        .morph-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9998;
+            filter: url(#morph);
+        }
+
+        /* Image target area */
+        .image-target {
+            position: fixed;
+            top: 50%;
+            right: 100px;
+            transform: translateY(-50%);
+            width: 200px;
+            height: 200px;
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 8px;
+            z-index: 998;
+        }
+
+        /* Content area */
+        .content {
+            padding-top: 120px;
+            padding: 120px 48px 48px;
+            color: #111111;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            margin-bottom: 80px;
+        }
+
+        .content-section h2 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: #111111;
+        }
+
+        .content-section p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            color: #222222;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="morph-layer">
+        <div class="cursor" id="cursor">
+            <div class="cursor-text" id="cursorText">A beautiful landscape with mountains and a lake at sunset</div>
+        </div>
+        <nav class="menu" id="menu">
+            <a href="#" class="menu-item" data-item="home">Home</a>
+            <a href="#" class="menu-item" data-item="work">Work</a>
+            <a href="#" class="menu-item" data-item="about">About</a>
+        </nav>
+    </div>
+
+    <div class="image-target" id="imageTarget"></div>
+
+    <div class="filter-wrapper">
+        <main class="content">
+        <section class="content-section">
+            <h2>Introduction</h2>
+            <p>This is a test page for exploring interactive cursor effects and morphing animations. The pink cursor follows your mouse movements and creates dynamic connections with menu items and interactive elements.</p>
+            <p>As you move the cursor around the page, you'll notice how it responds to different elements. The cursor can transform from a simple circle into a container for additional information, demonstrating fluid and organic interactions.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Features</h2>
+            <p>The page includes several interactive features designed to create engaging user experiences. The morphing effect uses SVG filters to create smooth, organic connections between the cursor and menu items.</p>
+            <p>When you hover over the image target on the right side of the screen, the cursor will grow slightly and then expand into a rounded rectangle after half a second, displaying alt text for the image.</p>
+            <p>The menu items respond to the cursor's proximity, creating a sense of connection and interactivity that goes beyond traditional hover states.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Design Philosophy</h2>
+            <p>This design explores the boundaries between static and dynamic interfaces. By making the cursor itself an interactive element, we create a more engaging and playful experience.</p>
+            <p>The pink color scheme provides a bold contrast against the dark background, making interactive elements stand out while maintaining visual hierarchy.</p>
+            <p>Every interaction is designed to feel smooth and organic, using easing functions and transitions that mimic natural movement patterns.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Technical Implementation</h2>
+            <p>The morphing effect is achieved through SVG filters that blur and blend overlapping elements. This creates a fluid connection between the cursor and menu items when they're in close proximity.</p>
+            <p>JavaScript handles the cursor tracking and proximity detection, while CSS transitions provide smooth animations for all state changes.</p>
+            <p>The page is fully responsive and maintains its interactive qualities across different screen sizes and devices.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Future Possibilities</h2>
+            <p>This foundation opens up many possibilities for creative interactions. The cursor could respond to different types of content, change colors based on context, or provide additional information through various transformations.</p>
+            <p>Menu items could expand to show submenus, images could reveal metadata, and the entire interface could adapt based on user behavior and preferences.</p>
+            <p>The morphing effect could be extended to create connections between multiple elements, forming visual networks that represent relationships in the content.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Conclusion</h2>
+            <p>Interactive cursor effects represent just one way to make web interfaces more engaging and delightful. By thinking beyond traditional hover states, we can create experiences that feel more alive and responsive.</p>
+            <p>This page serves as a playground for exploring these ideas, and you're encouraged to experiment with different interactions and see how they feel.</p>
+            <p>Thank you for exploring this interactive experience. Feel free to move your cursor around and discover all the different ways the interface responds to your movements.</p>
+        </section>
+    </main>
+    </div>
+
+    <svg class="morph-filter" viewBox="0 0 0 0" style="position: absolute; width: 0; height: 0;">
+        <filter id="morph">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="
+                1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 64 -32" result="morph" />
+            <feBlend in="SourceGraphic" in2="morph" />
+        </filter>
+    </svg>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        const cursorText = document.getElementById('cursorText');
+        const menuItems = document.querySelectorAll('.menu-item');
+        const imageTarget = document.getElementById('imageTarget');
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+        let hoverTimer = null;
+        let isHoveringImage = false;
+
+        // Track mouse position - use clientX/clientY for viewport coordinates (correct for fixed cursor)
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Smooth cursor follow with morphing merge effect using SVG filter
+        function animateCursor() {
+            const isExpanded = cursor.classList.contains('expanded');
+            const isHovering = cursor.classList.contains('hovering-image');
+            
+            let cursorWidth, cursorHeight;
+            if (isExpanded) {
+                cursorWidth = 250;
+                // Get actual height from the element's bounding box
+                cursorHeight = cursor.offsetHeight || cursor.getBoundingClientRect().height || 60;
+            } else if (isHovering) {
+                cursorWidth = 56;
+                cursorHeight = 56;
+            } else {
+                cursorWidth = 48;
+                cursorHeight = 48;
+            }
+            
+            // Calculate target position (centered on mouse)
+            const targetX = mouseX - cursorWidth / 2;
+            const targetY = mouseY - cursorHeight / 2;
+            
+            // Smooth interpolation - use higher speed for more responsive tracking
+            cursorX += (targetX - cursorX) * 0.2;
+            cursorY += (targetY - cursorY) * 0.2;
+            
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+
+            const cursorCenterX = cursorX + cursorWidth / 2;
+            const cursorCenterY = cursorY + cursorHeight / 2;
+            
+            let isMerging = false;
+
+            // Check if cursor is over image target first
+            const targetRect = imageTarget.getBoundingClientRect();
+            const isOverImage = cursorCenterX >= targetRect.left && 
+                               cursorCenterX <= targetRect.right &&
+                               cursorCenterY >= targetRect.top && 
+                               cursorCenterY <= targetRect.bottom;
+
+            if (isOverImage && !isHoveringImage) {
+                // Start hovering - cursor grows slightly
+                isHoveringImage = true;
+                cursor.classList.add('hovering-image');
+                
+                // Start timer for expansion - cursor becomes container
+                hoverTimer = setTimeout(() => {
+                    cursor.classList.remove('hovering-image');
+                    cursor.classList.add('expanded');
+                }, 500);
+            } else if (!isOverImage && isHoveringImage) {
+                // Stop hovering - reset cursor
+                isHoveringImage = false;
+                cursor.classList.remove('hovering-image', 'expanded');
+                if (hoverTimer) {
+                    clearTimeout(hoverTimer);
+                    hoverTimer = null;
+                }
+            }
+
+            // Check proximity to menu items - the SVG filter creates the morphing effect
+            // Only merge if not hovering over image
+            if (!isOverImage) {
+                menuItems.forEach((item) => {
+                    const rect = item.getBoundingClientRect();
+                    const itemCenterX = rect.left + rect.width / 2;
+                    const itemCenterY = rect.top + rect.height / 2;
+                    
+                    const distance = Math.sqrt(
+                        Math.pow(cursorCenterX - itemCenterX, 2) + 
+                        Math.pow(cursorCenterY - itemCenterY, 2)
+                    );
+                    
+                    const maxDistance = 100;
+                    
+                    if (distance < maxDistance) {
+                        isMerging = true;
+                        const proximity = 1 - (distance / maxDistance);
+                        
+                        // Scale up when close - the filter handles the visual morphing connection
+                        const scale = 1 + proximity * 0.3;
+                        cursor.style.transform = `scale(${scale})`;
+                        item.classList.add('merging');
+                    } else {
+                        item.classList.remove('merging');
+                    }
+                });
+            }
+
+            // Reset cursor transform if not merging (unless hovering image)
+            if (!isMerging && !isHoveringImage) {
+                cursor.style.transform = 'scale(1)';
+            }
+
+            requestAnimationFrame(animateCursor);
+        }
+
+        animateCursor();
+
+        // Prevent default link behavior for demo
+        menuItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>
+

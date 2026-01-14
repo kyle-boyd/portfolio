@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liquid Menu + Cursor Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background: white;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <!-- Hidden SVG filter that creates the gooey merge effect -->
+    <svg class="absolute w-0 h-0" aria-hidden="true">
+      <filter id="liquid-goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+        <feColorMatrix
+          in="blur"
+          mode="matrix"
+          values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+          result="goo"
+        />
+        <feBlend in="SourceGraphic" in2="goo" />
+      </filter>
+    </svg>
+
+    <div id="root"></div>
+
+    <script type="module">
+      import React, { useEffect } from "https://esm.sh/react@18.3.1";
+      import { createRoot } from "https://esm.sh/react-dom@18.3.1/client";
+      import { motion, useMotionValue, useSpring } from "https://esm.sh/framer-motion@11.1.7";
+
+      function LiquidMenuCursor() {
+        const rawX = useMotionValue(window.innerWidth / 2);
+        const rawY = useMotionValue(window.innerHeight / 2);
+
+        const x = useSpring(rawX, { stiffness: 1000, damping: 20, mass: 0.05 });
+        const y = useSpring(rawY, { stiffness: 1000, damping: 20, mass: 0.05 });
+
+        useEffect(() => {
+          const update = (e) => {
+            rawX.set(e.clientX);
+            rawY.set(e.clientY);
+          };
+          window.addEventListener("pointermove", update);
+          return () => window.removeEventListener("pointermove", update);
+        }, [rawX, rawY]);
+
+        return React.createElement(
+          "div",
+          {
+            className: "fixed inset-0 pointer-events-none",
+            style: { filter: "url(#liquid-goo)" },
+          },
+          // Menu bar
+          React.createElement(motion.div, {
+            className: "fixed top-0 left-0 w-full h-14 bg-black",
+            layout: true,
+          }),
+          // Cursor
+          React.createElement(motion.div, {
+            className: "absolute w-20 h-20 rounded-full bg-black",
+            style: {
+              x,
+              y,
+              translateX: "-50%",
+              translateY: "-50%",
+            },
+          })
+        );
+      }
+
+      createRoot(document.getElementById("root")).render(
+        React.createElement(LiquidMenuCursor)
+      );
+    </script>
+  </body>
+</html>
+

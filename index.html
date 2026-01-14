@@ -17,7 +17,7 @@
   <link rel="icon" type="image/x-icon" href="/images/faviconbw.png">
   <link rel="stylesheet" href="styles.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
   </style>
 
 <script>window['_fs_host'] = 'fullstory.com';
@@ -43,145 +43,217 @@
   </script>
 </head>
 <body>
-  <div class="homecontainer">
-    <!-- Header -->
-    <header>
-      <!-- Logo and navigation -->
-      <div class="logo S boldtext">
-        <a href="/"><img src="images/logo.png" alt="Logo"></a>
-        <a href="/">Kyle Boyd</a>
+  <!-- Top Menu Bar -->
+  <nav class="top-menu-bar">
+    <div class="menu-container">
+      <div class="brand-logo">
+        <a href="/" class="brand-link">
+          <img src="images/kblogo.svg" alt="KB Logo" class="brand-logo-img">
+          <span class="brand-name">Kyle Boyd</span>
+        </a>
       </div>
-      <nav>
-        <ul>
-          <li><a class="S boldtext" href="#work">Work</a></li>
-          <li><a class="S boldtext" href="about">About</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-      <!-- Hero Section -->
-      <div class="hero animatesection">
-        <h1 class="L">I am a Product Designer who loves <span class="highlighted-text">systems thinking</span> and I build enterprise solutions for SaaS products.</h1>
+      <div class="menu-nav">
+        <a href="/" class="nav-item active">Home</a>
+        <a href="#work" class="nav-item">Work</a>
+        <a href="#writing" class="nav-item">Writing</a>
+        <a href="about" class="nav-item">About</a>
+        <a href="images/kyleboyd_resume.pdf" class="nav-item" target="_blank">Resume</a>
       </div>
+    </div>
+  </nav>
 
-      <!-- Feedback Section -->
-      <div class="feedback">
-        <p class="M boldtext">Feedback</p>
-        <div class="fcards">
-          <!-- Feedback cards -->
-          <div class="card">
-            <p class="XS mediumtext">You have a knack for seeing to the core of a problem and addressing it head on. You've been an ally for the eng team!</p>
-            <p class="XXS">Jim, Staff Software Engineer</p>
-          </div>
-          <!-- Add similar card structures for other feedback items -->
-          <div class="card">
-            <p class="XS mediumtext">You seamlessly flex from creative, big picture thinking to in-the-weeds logic</p>
-            <p class="XXS">Morgan, Group Product Manager</p>
-          </div>
-          <div class="card">
-            <p class="XS mediumtext">I could not ask for a better design partner than Kyle. It is a joy to work with someone who supports his peers, but isn’t afraid to challenge design solutions</p>
-            <p class="XXS">Sandhya, Senior Product Designer</p>
-          </div>
-          <div class="card">
-            <p class="XS mediumtext">You have this amazing ability to take an exorbitant amount of information and magically produce totally streamlined solutions!</p>
-            <p class="XXS">Carly, Product Manager</p>
-          </div>
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section with Artistic Background -->
+    <section class="hero-section-new" id="hero-parallax">
+      <div class="hero-background">
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title-new serif">Hello, I'm Kyle.</h1>
+          <p class="hero-subtitle-new serif">I'm a <em>designer</em> working in product & systems.</p>
         </div>
-      </div>
-
-      <!-- Down Arrow Image -->
-      <div>
-        <img src="images/DownArrow.svg" alt="Continue reading" class="arrow">
-      </div>
-   
-   
-
-
-
-      <!-- Project Sections -->
-      <!-- Lighthouse // Project 1 -->
-      <div class="section" id="work">
-        <div class="left-column">
-          <!-- Project image -->
-          <a href="lighthouse"><img src="images/lh_initial.png" class="projectImage animatesection" alt="Lighthouse Project Image"></a>
-        </div>
-        <div class="right-column">
-          <!-- Project details -->
-          <div class="animatesection">
-            <p class="XS animatesection">Google</p>
-            <a class="L boldtext animatesection" href="lighthouse">Lighthouse</a>
-            <!-- <p class="S pw">Password required</p> -->
-            <p class="S projectDescription animatesection">Saving Google Real Estate planners "days worth of time" every month with a portfolio forecast tool.</p>
-            <a class="XXS boldtext animatesection" href="lighthouse">See Project →</a>
+        
+        <!-- What People Say Section (inside hero) -->
+        <div class="testimonials-in-hero">
+          <div class="testimonials-container">
+            <h2 class="section-title-left">What people say about me</h2>
+            <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <p class="testimonial-text">Kyle has a knack for seeing to the core of a problem, solving issues methodically, but not losing sight of the end goal.</p>
+              <div class="testimonial-author">
+                <div class="author-avatar"></div>
+                <div class="author-info">
+                  <div class="author-name">Sarah Johnson</div>
+                  <div class="author-role">Product Manager</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-text">Kyle never ceases for seeing to the core of a problem and continuously challenges traditional solutions for the end user's benefit.</p>
+              <div class="testimonial-author">
+                <div class="author-avatar"></div>
+                <div class="author-info">
+                  <div class="author-name">Michael Chen</div>
+                  <div class="author-role">Engineering Lead</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <p class="testimonial-text">Kyle has a knack for seeing to the core of a problem, solving issues methodically, but not losing sight of the end goal.</p>
+              <div class="testimonial-author">
+                <div class="author-avatar"></div>
+                <div class="author-info">
+                  <div class="author-name">Emma Davis</div>
+                  <div class="author-role">Design Director</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      </div>
+    </section>
 
-            <!-- Project Sections -->
-      <!-- Design System // Project 1 -->
-      <div class="section" id="work">
-        <div class="left-column">
-          <!-- Project image -->
-          <a href="acelabds"><img src="images/slabds_progressmodal.png" class="noshadowimage animatesection" alt="Acelab Design System"></a>
+    <div class="content-container">
+      <!-- Recent Work Section -->
+      <section class="recent-work" id="work">
+        <div class="section-header">
+          <h2 class="section-title-left">Recent work</h2>
+          <a href="#" class="see-all-link">See all →</a>
         </div>
-        <div class="right-column">
-          <!-- Project details -->
-          <div class="animatesection">
-            <p class="XS animatesection">Acelab</p>
-            <a class="L boldtext animatesection" href="acelabds">Design System</a>
-            <p class="S projectDescription animatesection">Building and scaling a design system</p>
-            <a class="XXS boldtext animatesection" href="acelabds">See Project →</a>
+        <div class="work-grid-new">
+          <div class="work-card">
+            <a href="lighthouse" class="work-link-new">
+              <div class="work-image-wrapper-new">
+                <img src="images/lh_initial.png" alt="Syncefy" class="work-image-new">
+                <div class="work-overlay"></div>
+              </div>
+              <div class="work-info-new">
+                <h3 class="work-title-new">Syncefy</h3>
+                <p class="work-category-new">Enterprise data platform</p>
+              </div>
+            </a>
+          </div>
+          <div class="work-card">
+            <a href="acelabds" class="work-link-new">
+              <div class="work-image-wrapper-new">
+                <img src="images/slabds_progressmodal.png" alt="Axolotl Design System" class="work-image-new">
+                <div class="work-overlay"></div>
+              </div>
+              <div class="work-info-new">
+                <h3 class="work-title-new">Axolotl Design System</h3>
+                <p class="work-category-new">Enterprise data platform</p>
+              </div>
+            </a>
+          </div>
+          <div class="work-card">
+            <a href="clay" class="work-link-new">
+              <div class="work-image-wrapper-new">
+                <img src="images/clay_initial.png" alt="Google Lighthouse" class="work-image-new">
+                <div class="work-overlay"></div>
+              </div>
+              <div class="work-info-new">
+                <h3 class="work-title-new">Google Lighthouse</h3>
+                <p class="work-category-new">Enterprise data platform</p>
+              </div>
+            </a>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Clay // Project 2 -->
-      <div class="section">
-        <div class="left-column">
-          <a href="clay"><img src="images/clay_initial.png" class="projectImage animatesection" alt="Clay Project Image"></a>
+      <!-- Side Projects Section -->
+      <section class="side-projects">
+        <div class="section-header">
+          <h2 class="section-title-left">Side projects</h2>
+          <a href="#" class="see-all-link">See all →</a>
         </div>
-        <div class="right-column">
-          <div class="animatesection">
-            <p class="XS animatesection">Google REWS</p>
-            <a class="L boldtext animatesection" href="clay">Clay Studio | Home</a>
-            <!-- <p class="S pw">Password required</p> -->
-            <p class="S projectDescription animatesection">Creating a home base for a programming and schematic design application</p>
-            <a class="XXS boldtext animatesection" href="clay">See Project →</a>
+        <div class="projects-grid-two">
+          <div class="work-card">
+            <a href="calibrator" class="work-link-new">
+              <div class="work-image-wrapper-new work-image-wide">
+                <img src="images/calibrator_initial.png" alt="Syncefy" class="work-image-new">
+                <div class="work-overlay"></div>
+              </div>
+              <div class="work-info-new">
+                <h3 class="work-title-new">Syncefy</h3>
+                <p class="work-category-new">Enterprise data platform</p>
+              </div>
+            </a>
+          </div>
+          <div class="work-card">
+            <a href="#" class="work-link-new">
+              <div class="work-image-wrapper-new work-image-wide">
+                <img src="images/lh_initial.png" alt="Google Lighthouse" class="work-image-new">
+                <div class="work-overlay"></div>
+              </div>
+              <div class="work-info-new">
+                <h3 class="work-title-new">Google Lighthouse</h3>
+                <p class="work-category-new">Enterprise data platform</p>
+              </div>
+            </a>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!--  Calibrator // Project 3 -->
-      <div class="section">
-        <div class="left-column">
-          <a href="calibrator"><img src="images/calibrator_initial.png" class="projectImage animatesection" alt="Calibrator Project Image"></a>
+      <!-- Writing Section -->
+      <section class="writing-section" id="writing">
+        <div class="section-header">
+          <h2 class="section-title-left">Writing</h2>
+          <a href="#" class="see-all-link">See all →</a>
         </div>
-        <div class="right-column">
-          <div class="animatesection">
-            <p class="XS animatesection">Google GR+D</p>
-            <a class="L boldtext animatesection" href="calibrator">Calibrator | Project Comparison Feature</a>
-            <!-- <p class="S pw">Password required</p> -->
-            <p class="S projectDescription animatesection">A historical construction costs and comparison tool</p>
-            <a class="XXS boldtext animatesection" href="calibrator">See Project →</a>
-          </div>
+        <div class="writing-list">
+          <article class="writing-item">
+            <time class="writing-date">Coming Soon</time>
+            <h3 class="writing-title">Design thoughts and process</h3>
+          </article>
         </div>
+      </section>
+
+      <!-- Get in Touch Section -->
+      <section class="contact-section">
+        <h2 class="section-title-left">Get in touch</h2>
+        <p class="contact-text">Want to work on something together? Just want to chat? Hit me up.</p>
+        <div class="social-grid">
+          <a href="https://www.linkedin.com/in/kyle-boyd-design" class="social-icon" aria-label="LinkedIn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="mailto:contact@kyleboyd.design" class="social-icon" aria-label="Email">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+          <a href="images/kyleboyd_resume.pdf" class="social-icon" aria-label="Resume">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer with black background -->
+  <footer class="black-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="Logo" class="footer-logo-img">
       </div>
+      <p class="footer-message">Thanks for coming by. See you around.</p>
+      <p class="footer-copyright">©2024 Selected Works / Kyle Boyd</p>
+    </div>
+  </footer>
 
-    </main>
-
-    <!-- Footer -->
-    <footer>
-      <p class="S boldtext">&copy; 2024 Kyle Boyd</p>
-      <nav>
-        <ul>
-          <li><a class="S boldtext" href="https://www.linkedin.com/in/kyle-boyd-design">LinkedIn</a></li>
-          <li><a class="S boldtext" href="images/kyleboyd_resume.pdf">Resume</a></li>
-        </ul>
-      </nav>
-    </footer>
-  </div>
   <script src="script.js"></script>
 </body>
 </html>
