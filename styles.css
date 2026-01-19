@@ -572,7 +572,7 @@ font-weight: normal;
 
 /* Modern Portfolio Styles */
 :root {
-  --black: #000000;
+  --black: #212121;
   --white: #F4F4F4;
   --gray-light: #999999;
   --gray-dark: #333333;
@@ -924,15 +924,15 @@ font-weight: normal;
 .work-card {
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
   background: var(--white);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 8px;
+  transition: background-color 0.3s ease;
 }
 
 .work-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .work-link-new {
@@ -948,7 +948,8 @@ font-weight: normal;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--black);
+  border-radius: 4px;
 }
 
 .work-image-new {
@@ -959,9 +960,6 @@ font-weight: normal;
   transition: transform 0.3s ease;
 }
 
-.work-card:hover .work-image-new {
-  transform: scale(1.05);
-}
 
 .work-overlay {
   position: absolute;
@@ -974,9 +972,6 @@ font-weight: normal;
   transition: opacity 0.3s ease;
 }
 
-.work-card:hover .work-overlay {
-  opacity: 1;
-}
 
 .work-info-new {
   padding: 20px 20px 24px;
@@ -1036,7 +1031,7 @@ font-weight: normal;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--black);
   flex-shrink: 0;
 }
 
