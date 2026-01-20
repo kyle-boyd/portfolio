@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-74PR65QFLM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-74PR65QFLM');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Test - Kyle Boyd Portfolio</title>
+  <link rel="icon" type="image/x-icon" href="/images/faviconbw.png">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+  </style>
+
+<style>
+/* Reset body margins for edge-to-edge */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Stacked Hero Section Styles */
+.stacked-hero-section {
+  position: relative;
+  width: 100vw;
+  height: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #F4F4F4;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.stacked-hero-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Stack Images - Background Layers */
+.hero-stack-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 1800px;
+  object-fit: cover;
+  object-position: bottom;
+  pointer-events: none;
+}
+
+.hero-stack-back {
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+.hero-stack-mid {
+  z-index: 3;
+  top: 0;
+  left: 0;
+}
+
+.hero-stack-front {
+  z-index: 5;
+  top: 0;
+  left: 0;
+}
+
+/* Center images when screen is wider than 1800px */
+@media (min-width: 1800px) {
+  .hero-stack-back,
+  .hero-stack-mid,
+  .hero-stack-front {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Central Content Box */
+.hero-content-box {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 48px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-headline {
+  font-size: clamp(2rem, 5vw + 1rem, 4rem);
+  font-weight: 700;
+  color: #2B2B2B;
+  margin-bottom: 24px;
+  line-height: 1.2;
+  font-family: 'Playfair Display', serif;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 16px 32px;
+  background-color: #2B2B2B;
+  color: #F4F4F4;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: clamp(1rem, 1.5vw + 0.5rem, 1.25rem);
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Floating Feedback Cards */
+.stacked-feedback-cards {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.feedback-card-layered {
+  position: absolute;
+  border-radius: 12px;
+  background: radial-gradient(174.09% 182.05% at 100% 4.85%, rgba(181, 181, 181, 0.50) 0%, rgba(96, 96, 96, 0.50) 55.09%);
+  box-shadow: 0 8px 8px -4px rgba(0, 0, 0, 0.04), 0 20px 24px -4px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(6px);
+  padding: clamp(16px, 2vw + 8px, 24px);
+  width: clamp(150px, 20vw + 50px, 350px);
+  pointer-events: auto;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  isolation: isolate;
+}
+
+/* Gradient border using pseudo-element */
+.feedback-card-layered::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.9));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Default hover - will be overridden by specific card hovers in media queries */
+.feedback-card-layered:hover {
+  /* Individual card hovers are defined in media queries to preserve positioning */
+}
+
+/* Cards behind text (lower z-index - behind herostackmid) */
+.feedback-card-behind {
+  z-index: 2;
+}
+
+.feedback-card-behind:hover {
+  box-shadow: 0 12px 12px -4px rgba(0, 0, 0, 0.06), 0 24px 32px -4px rgba(0, 0, 0, 0.12);
+}
+
+/* Cards between mid and front (behind herostackfront, in front of herostackmid) */
+.feedback-card-between {
+  z-index: 4;
+}
+
+.feedback-card-between:hover {
+  box-shadow: 0 12px 12px -4px rgba(0, 0, 0, 0.06), 0 24px 32px -4px rgba(0, 0, 0, 0.12);
+}
+
+/* Cards in front of text (higher z-index but behind herostackfront) */
+.feedback-card-front {
+  z-index: 4;
+}
+
+.feedback-card-front:hover {
+  box-shadow: 0 12px 12px -4px rgba(0, 0, 0, 0.06), 0 24px 32px -4px rgba(0, 0, 0, 0.12);
+}
+
+/* Cards in front of everything (above herostackfront) */
+.feedback-card-very-front {
+  z-index: 6;
+}
+
+.feedback-card-very-front:hover {
+  box-shadow: 0 12px 12px -4px rgba(0, 0, 0, 0.06), 0 24px 32px -4px rgba(0, 0, 0, 0.12);
+}
+
+/* Specifically place card 2 below the mid stack layer */
+.feedback-card-2 {
+  z-index: 2;
+}
+
+.feedback-card-text {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+}
+
+.feedback-card-author {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 1;
+}
+
+/* Card positioning relative to center (50% of viewport) */
+@media (min-width: 1024px) {
+  /* Card 1: "You have a knack" - Mid-Bottom-Left */
+  .feedback-card-1 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-180%, calc(20% + 90px));
+  }
+  
+  .feedback-card-1:hover {
+    transform: translate(-180%, calc(20% + 90px - 8px));
+  }
+  
+  /* Card 2: "You seamlessly flex" - Mid-Left */
+  .feedback-card-2 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-200%, calc(-20% - 100px));
+  }
+  
+  .feedback-card-2:hover {
+    transform: translate(-200%, calc(-20% - 100px - 8px));
+  }
+  
+  /* Card 3: "I could not ask for a better" - Top Right */
+  /* Progressively moves up as screen gets wider: 100px higher at 1024px, 200px higher at 1800px */
+  .feedback-card-3 {
+    top: 50%;
+    left: 50%;
+    transform: translate(80%, calc(-70% - clamp(100px, 100px + ((100vw - 1024px) / 776px) * 100px, 200px)));
+  }
+  
+  .feedback-card-3:hover {
+    transform: translate(80%, calc(-70% - clamp(100px, 100px + ((100vw - 1024px) / 776px) * 100px, 200px) - 8px));
+  }
+  
+  /* Card 4: "You have this amazing ability" - Bottom Right */
+  .feedback-card-4 {
+    top: 50%;
+    left: 50%;
+    transform: translate(100%, calc(50% + 100px));
+  }
+  
+  .feedback-card-4:hover {
+    transform: translate(100%, calc(50% + 100px - 8px));
+  }
+}
+
+/* Hide 2 cards on tablets */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .feedback-card-3,
+  .feedback-card-4 {
+    display: none;
+  }
+  
+  .feedback-card-1 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-150%, -80%);
+  }
+  
+  .feedback-card-1:hover {
+    transform: translate(-150%, calc(-80% - 8px));
+  }
+  
+  .feedback-card-2 {
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, -40%);
+  }
+  
+  .feedback-card-2:hover {
+    transform: translate(50%, calc(-40% - 8px));
+  }
+}
+
+/* Mobile: Vertical stack layout */
+@media (max-width: 767px) {
+  .stacked-hero-section {
+    min-height: auto;
+    padding: 40px 0;
+  }
+  
+  .stacked-hero-container {
+    min-height: auto;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .hero-content-box {
+    order: 1;
+    padding: 0;
+    margin-bottom: 32px;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .stacked-feedback-cards {
+    position: relative;
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    height: auto;
+    pointer-events: auto;
+    padding-top: 20px;
+  }
+  
+  .feedback-card-layered {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+  
+  .feedback-card-1,
+  .feedback-card-2 {
+    display: block;
+  }
+  
+  .feedback-card-3,
+  .feedback-card-4 {
+    display: none;
+  }
+}
+</style>
+
+</head>
+<body>
+  <!-- Top Menu Bar -->
+  <nav class="top-menu-bar">
+    <div class="menu-container">
+      <div class="brand-logo">
+        <a href="/" class="brand-link">
+          <img src="images/kblogo.svg" alt="KB Logo" class="brand-logo-img">
+          <span class="brand-name">Kyle Boyd</span>
+        </a>
+      </div>
+      <div class="menu-nav">
+        <a href="/" class="nav-item">Home</a>
+        <a href="#work" class="nav-item">Work</a>
+        <a href="#writing" class="nav-item">Writing</a>
+        <a href="about" class="nav-item">About</a>
+        <a href="images/kyleboyd_resume.pdf" class="nav-item" target="_blank">Resume</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Stacked Hero Section -->
+  <section class="stacked-hero-section">
+    <div class="stacked-hero-container">
+      <!-- Back Layer -->
+      <img src="images/heroStackBack.png" alt="Hero Background" class="hero-stack-layer hero-stack-back">
+      
+      <!-- Mid Layer -->
+      <img src="images/heroStackMid.png" alt="Hero Middle" class="hero-stack-layer hero-stack-mid">
+      
+      <!-- Front Layer -->
+      <img src="images/heroStackFront.png" alt="Hero Front" class="hero-stack-layer hero-stack-front">
+      
+      <!-- Central Content Box -->
+      <div class="hero-content-box">
+        <h1 class="hero-headline">Kyle Boyd</h1>
+        <a href="#work" class="hero-cta">View My Work</a>
+      </div>
+      
+      <!-- Layered Feedback Cards -->
+      <div class="stacked-feedback-cards">
+        <!-- Card 1: Between mid and front (behind herostackfront, in front of herostackmid) -->
+        <div class="feedback-card-layered feedback-card-between feedback-card-1">
+          <p class="feedback-card-text">You have a knack for seeing to the core of a problem and addressing it head on. You've been an ally for the eng team!</p>
+          <p class="feedback-card-author">Jim, Staff Software Engineer</p>
+        </div>
+        
+        <!-- Card 2: Very front (above herostackfront) -->
+        <div class="feedback-card-layered feedback-card-very-front feedback-card-2">
+          <p class="feedback-card-text">You seamlessly flex from creative, big picture thinking to in-the-weeds logic</p>
+          <p class="feedback-card-author">Morgan, Group Product Manager</p>
+        </div>
+        
+        <!-- Card 3: Behind midstack -->
+        <div class="feedback-card-layered feedback-card-behind feedback-card-3">
+          <p class="feedback-card-text">I could not ask for a better design partner than Kyle. It is a joy to work with someone who supports his peers, but isn't afraid to challenge design solutions</p>
+          <p class="feedback-card-author">Sandhya, Senior Product Designer</p>
+        </div>
+        
+        <!-- Card 4: In front of text (higher z-index with deep shadow) -->
+        <div class="feedback-card-layered feedback-card-front feedback-card-4">
+          <p class="feedback-card-text">You have this amazing ability to take an exorbitant amount of information and magically produce totally streamlined solutions!</p>
+          <p class="feedback-card-author">Carly, Product Manager</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="black-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="Logo" class="footer-logo-img">
+      </div>
+      <p class="footer-message">Thanks for coming by. See you around.</p>
+      <p class="footer-copyright">©2024 Selected Works / Kyle Boyd</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
