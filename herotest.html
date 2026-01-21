@@ -31,7 +31,7 @@ body {
 /* Stacked Hero Section Styles */
 .stacked-hero-section {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 900px;
   display: flex;
   align-items: center;
@@ -48,7 +48,7 @@ body {
 .stacked-hero-container {
   position: relative;
   width: 100%;
-  max-width: 100%;
+  max-width: 1980px; /* Limit hero image stack width */
   height: 900px;
   display: flex;
   align-items: center;
@@ -62,9 +62,9 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  max-width: 1800px;
+  min-height: 100%;
   object-fit: cover;
-  object-position: bottom;
+  object-position: center;
   pointer-events: none;
 }
 
@@ -86,33 +86,48 @@ body {
   left: 0;
 }
 
-/* Center images when screen is wider than 1800px */
-@media (min-width: 1800px) {
+/* Center images when screen is wider than 1980px */
+@media (min-width: 1980px) {
   .hero-stack-back,
   .hero-stack-mid,
   .hero-stack-front {
     left: 50%;
     transform: translateX(-50%);
+    height: 100%;
+    min-height: 100%;
   }
 }
 
 /* Central Content Box */
 .hero-content-box {
-  position: relative;
+  position: absolute;
   z-index: 10;
   text-align: center;
-  padding: 48px;
-  max-width: 800px;
-  margin: 0 auto;
+  padding: 0px;
+  max-width: 460px;
+  top: calc(80px + 48px);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .hero-headline {
-  font-size: clamp(2rem, 5vw + 1rem, 4rem);
-  font-weight: 700;
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -3.84px;
   color: #2B2B2B;
-  margin-bottom: 24px;
+  margin-bottom: 0px;
   line-height: 1.2;
   font-family: 'Playfair Display', serif;
+}
+
+.hero-subtext {
+  font-size: 24px;
+  font-weight: 200;
+  color: #2B2B2B;
+  margin-bottom: 24px;
+  line-height: 1.4;
+  font-family: 'Playfair Display', serif;
+  width: 500px;
 }
 
 .hero-cta {
@@ -145,11 +160,11 @@ body {
 .feedback-card-layered {
   position: absolute;
   border-radius: 12px;
-  background: radial-gradient(174.09% 182.05% at 100% 4.85%, rgba(181, 181, 181, 0.50) 0%, rgba(96, 96, 96, 0.50) 55.09%);
+  background: radial-gradient(ellipse at 100% 4%, rgba(250, 250, 250, 0.25) 0%, rgba(130, 130, 130, 0.25) 35%);
   box-shadow: 0 8px 8px -4px rgba(0, 0, 0, 0.04), 0 20px 24px -4px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(6px);
   padding: clamp(16px, 2vw + 8px, 24px);
-  width: clamp(150px, 20vw + 50px, 350px);
+  width: clamp(150px, 20vw + 50px, 224px);
   pointer-events: auto;
   transition: transform 0.6s ease, box-shadow 0.6s ease;
   isolation: isolate;
@@ -159,13 +174,18 @@ body {
 .feedback-card-layered::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -1px;
   border-radius: 12px;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.9));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9));
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
   mask-composite: exclude;
+  padding: 1px;
   pointer-events: none;
   z-index: -1;
 }
@@ -221,7 +241,7 @@ body {
   line-height: 1.6;
   color: #FFFFFF;
   margin-bottom: 16px;
-  font-weight: 700;
+  font-weight: 300;
   position: relative;
   z-index: 1;
 }
@@ -235,49 +255,97 @@ body {
 
 /* Card positioning relative to center (50% of viewport) */
 @media (min-width: 1024px) {
-  /* Card 1: "You have a knack" - Mid-Bottom-Left */
+  /* Card 1: "You have a knack"
+     - 1024px: x = -180% + 200px, y = 20% + 140px
+     - 1980px: x = -180% + 100px (left 100px), y = 20% + 190px (down 50px)
+     Interpolate x: -100px at 1980px, y: +50px at 1980px
+  */
   .feedback-card-1 {
     top: 50%;
     left: 50%;
-    transform: translate(-180%, calc(20% + 90px));
+    transform: translate(
+      calc(-180% + 200px - clamp(0px, 10.46vw - 107.11px, 100px)),
+      calc(
+        20% + 90px + 50px + clamp(0px, 5.23vw - 53.55px, 50px)
+      )
+    );
   }
   
   .feedback-card-1:hover {
-    transform: translate(-180%, calc(20% + 90px - 8px));
+    transform: translate(
+      calc(-180% + 200px - clamp(0px, 10.46vw - 107.11px, 100px)),
+      calc(
+        20% + 90px + 50px + clamp(0px, 5.23vw - 53.55px, 50px) - 8px
+      )
+    );
   }
   
-  /* Card 2: "You seamlessly flex" - Mid-Left */
+  /* Card 2: "You seamlessly flex"
+     - At 1024px: x = -200%, y = -20% - 40px
+     - At 1980px: x = -200% - 200px (left 200px less, meaning right 200px more), y constant
+  */
   .feedback-card-2 {
     top: 50%;
     left: 50%;
-    transform: translate(-200%, calc(-20% - 100px));
+    transform: translate(
+      calc(
+        -200% - clamp(0px, 20.92vw - 214.22px, 200px)
+      ),
+      calc(-20% - 100px + 60px)
+    );
   }
   
   .feedback-card-2:hover {
-    transform: translate(-200%, calc(-20% - 100px - 8px));
+    transform: translate(
+      calc(
+        -200% - clamp(0px, 20.92vw - 214.22px, 200px)
+      ),
+      calc(-20% - 100px + 60px - 8px)
+    );
   }
   
-  /* Card 3: "I could not ask for a better" - Top Right */
-  /* Progressively moves up as screen gets wider: 100px higher at 1024px, 200px higher at 1800px */
+  /* Card 3: "I could not ask for a better"
+     - At 1024px: x = 80% + 48px, y = -70% - 50px
+     - At 1980px: x = 80% + 48px + 100px (right 200px from previous), y = -70% - 90px (up 40px)
+  */
   .feedback-card-3 {
     top: 50%;
     left: 50%;
-    transform: translate(80%, calc(-70% - clamp(100px, 100px + ((100vw - 1024px) / 776px) * 100px, 200px)));
+    transform: translate(
+      calc(
+        80% + 48px + clamp(0px, 10.46vw - 107.11px, 100px)
+      ),
+      calc(-70% - 150px + 100px - clamp(0px, 4.18vw - 42.84px, 40px))
+    );
   }
   
   .feedback-card-3:hover {
-    transform: translate(80%, calc(-70% - clamp(100px, 100px + ((100vw - 1024px) / 776px) * 100px, 200px) - 8px));
+    transform: translate(
+      calc(
+        80% + 48px + clamp(0px, 10.46vw - 107.11px, 100px)
+      ),
+      calc(-70% - 150px + 100px - clamp(0px, 4.18vw - 42.84px, 40px) - 8px)
+    );
   }
   
-  /* Card 4: "You have this amazing ability" - Bottom Right */
+  /* Card 4: "You have this amazing ability"
+     - At 1024px: x = 100%, y = 50% + 40px
+     - At 1980px: x = 100% + 100px (right 100px), y = 50% + 90px (down 50px)
+  */
   .feedback-card-4 {
     top: 50%;
     left: 50%;
-    transform: translate(100%, calc(50% + 100px));
+    transform: translate(
+      calc(100% + clamp(0px, 10.46vw - 107.11px, 100px)),
+      calc(50% + 40px + clamp(0px, 5.23vw - 53.55px, 50px))
+    );
   }
   
   .feedback-card-4:hover {
-    transform: translate(100%, calc(50% + 100px - 8px));
+    transform: translate(
+      calc(100% + clamp(0px, 10.46vw - 107.11px, 100px)),
+      calc(50% + 40px + clamp(0px, 5.23vw - 53.55px, 50px) - 8px)
+    );
   }
 }
 
@@ -391,17 +459,33 @@ body {
   <section class="stacked-hero-section">
     <div class="stacked-hero-container">
       <!-- Back Layer -->
-      <img src="images/heroStackBack.png" alt="Hero Background" class="hero-stack-layer hero-stack-back">
+      <img
+        src="images/heroImages/herostackback_1x.webp"
+        srcset="images/heroImages/herostackback_1x.webp 1x, images/heroImages/herostackback_2x.webp 2x"
+        alt="Hero Background"
+        class="hero-stack-layer hero-stack-back"
+      >
       
       <!-- Mid Layer -->
-      <img src="images/heroStackMid.png" alt="Hero Middle" class="hero-stack-layer hero-stack-mid">
+      <img
+        src="images/heroImages/herostackmid_1x.webp"
+        srcset="images/heroImages/herostackmid_1x.webp 1x, images/heroImages/herostackmid_2x.webp 2x"
+        alt="Hero Middle"
+        class="hero-stack-layer hero-stack-mid"
+      >
       
       <!-- Front Layer -->
-      <img src="images/heroStackFront.png" alt="Hero Front" class="hero-stack-layer hero-stack-front">
+      <img
+        src="images/heroImages/herostackfront_1x.webp"
+        srcset="images/heroImages/herostackfront_1x.webp 1x, images/heroImages/herostackfront_2x.webp 2x"
+        alt="Hero Front"
+        class="hero-stack-layer hero-stack-front"
+      >
       
       <!-- Central Content Box -->
       <div class="hero-content-box">
-        <h1 class="hero-headline">Kyle Boyd</h1>
+        <h1 class="hero-headline">Hello, I'm Kyle.</h1>
+        <p class="hero-subtext">I'm a <em>designer</em> building in product & systems for enterprise solutions.</p>
         <a href="#work" class="hero-cta">View My Work</a>
       </div>
       
