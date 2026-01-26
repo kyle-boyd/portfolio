@@ -20,6 +20,446 @@
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
   </style>
 
+<style>
+/* Reset body margins for edge-to-edge */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Stacked Hero Section Styles */
+.stacked-hero-section {
+  position: relative;
+  width: 100%;
+  height: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #F4F4F4;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.stacked-hero-container {
+  position: relative;
+  width: 100%;
+  max-width: 1980px; /* Limit hero image stack width */
+  height: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero Stack Images - Background Layers */
+.hero-stack-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+.hero-stack-back {
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+
+.hero-stack-mid {
+  z-index: 3;
+  top: 0;
+  left: 0;
+}
+
+.hero-stack-front {
+  z-index: 5;
+  top: 0;
+  left: 0;
+}
+
+/* Center images when screen is wider than 1980px */
+@media (min-width: 1980px) {
+  .hero-stack-back,
+  .hero-stack-mid,
+  .hero-stack-front {
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    min-height: 100%;
+  }
+}
+
+/* Central Content Box */
+.hero-content-box {
+  position: absolute;
+  z-index: 10;
+  text-align: center;
+  padding: 0px;
+  max-width: 460px;
+  top: calc(80px + 48px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero-headline {
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -3.84px;
+  color: var(--black);
+  margin-bottom: 0px;
+  line-height: 1.2;
+  font-family: 'Playfair Display', serif;
+}
+
+.hero-subtext {
+  font-size: 24px;
+  font-weight: 200;
+  color: var(--black);
+  margin-bottom: 24px;
+  line-height: 1.4;
+  font-family: 'Playfair Display', serif;
+  width: 500px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  border-radius: 99px;
+  border: none;
+  position: relative;
+  background: radial-gradient(174.09% 182.05% at 100% 4.85%, rgba(255, 255, 255, 0.15) 0%, rgba(57, 60, 50, 0.25) 48.56%);
+  box-shadow: 0 8px 8px -4px rgba(0, 0, 0, 0.04), 0 20px 24px -4px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(6px);
+  color: var(--black);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Gradient border using pseudo-element */
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 99px;
+  padding: 1px;
+  background: linear-gradient(to bottom left, rgba(255, 255, 255, 1) 0%, rgba(180, 180, 180, 0.8) 100%);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Floating Feedback Cards */
+.stacked-feedback-cards {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.feedback-card-layered {
+  position: absolute;
+  border-radius: 12px;
+  background: radial-gradient(ellipse at 100% 4%, rgba(250, 250, 250, 0.25) 0%, rgba(130, 130, 130, 0.25) 35%);
+  box-shadow: 0 8px 8px -4px rgba(0, 0, 0, 0.04), 0 20px 24px -4px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(6px);
+  padding: clamp(16px, 2vw + 8px, 24px);
+  width: clamp(150px, 20vw + 50px, 224px);
+  pointer-events: auto;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  isolation: isolate;
+}
+
+/* Gradient border using pseudo-element */
+.feedback-card-layered::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 12px;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9));
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Default hover - will be overridden by specific card hovers in media queries */
+.feedback-card-layered:hover {
+  /* Individual card hovers are defined in media queries to preserve positioning */
+}
+
+/* Cards behind text (lower z-index - behind herostackmid) */
+.feedback-card-behind {
+  z-index: 2;
+}
+
+.feedback-card-behind:hover {
+  box-shadow: 0 12px 12px -4px rgba(0, 0, 0, 0.06), 0 24px 32px -4px rgba(0, 0, 0, 0.12);
+}
+
+/* Cards between mid and front (behind herostackfront, in front of herostackmid) */
+.feedback-card-between {
+  z-index: 4;
+}
+
+.feedback-card-between:hover {
+  box-shadow: 0 12px 12px -4px rgba(0, 0, 0, 0.06), 0 24px 32px -4px rgba(0, 0, 0, 0.12);
+}
+
+/* Cards in front of text (higher z-index but behind herostackfront) */
+.feedback-card-front {
+  z-index: 4;
+}
+
+.feedback-card-front:hover {
+  box-shadow: 0 12px 12px -4px rgba(0, 0, 0, 0.06), 0 24px 32px -4px rgba(0, 0, 0, 0.12);
+}
+
+/* Cards in front of everything (above herostackfront) */
+.feedback-card-very-front {
+  z-index: 6;
+}
+
+.feedback-card-very-front:hover {
+  box-shadow: 0 12px 12px -4px rgba(0, 0, 0, 0.06), 0 24px 32px -4px rgba(0, 0, 0, 0.12);
+}
+
+/* Specifically place card 2 below the mid stack layer */
+.feedback-card-2 {
+  z-index: 2;
+}
+
+.feedback-card-text {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  font-weight: 300;
+  position: relative;
+  z-index: 1;
+}
+
+.feedback-card-author {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 1;
+}
+
+/* Card positioning relative to center (50% of viewport) */
+@media (min-width: 1024px) {
+  /* Card 1: "You have a knack"
+     - 1024px: x = -180% + 200px, y = 20% + 140px
+     - 1980px: x = -180% + 100px (left 100px), y = 20% + 190px (down 50px)
+     Interpolate x: -100px at 1980px, y: +50px at 1980px
+  */
+  .feedback-card-1 {
+    top: 50%;
+    left: 50%;
+    transform: translate(
+      calc(-180% + 200px - clamp(0px, 10.46vw - 107.11px, 100px)),
+      calc(
+        20% + 90px + 50px + clamp(0px, 5.23vw - 53.55px, 50px)
+      )
+    );
+  }
+  
+  .feedback-card-1:hover {
+    transform: translate(
+      calc(-180% + 200px - clamp(0px, 10.46vw - 107.11px, 100px)),
+      calc(
+        20% + 90px + 50px + clamp(0px, 5.23vw - 53.55px, 50px) - 8px
+      )
+    );
+  }
+  
+  /* Card 2: "You seamlessly flex"
+     - At 1024px: x = -200%, y = -20% - 40px
+     - At 1980px: x = -200% - 200px (left 200px less, meaning right 200px more), y constant
+  */
+  .feedback-card-2 {
+    top: 50%;
+    left: 50%;
+    transform: translate(
+      calc(
+        -200% - clamp(0px, 20.92vw - 214.22px, 200px)
+      ),
+      calc(-20% - 100px + 60px)
+    );
+  }
+  
+  .feedback-card-2:hover {
+    transform: translate(
+      calc(
+        -200% - clamp(0px, 20.92vw - 214.22px, 200px)
+      ),
+      calc(-20% - 100px + 60px - 8px)
+    );
+  }
+  
+  /* Card 3: "I could not ask for a better"
+     - At 1024px: x = 80% + 48px, y = -70% - 50px
+     - At 1980px: x = 80% + 48px + 100px (right 200px from previous), y = -70% - 90px (up 40px)
+  */
+  .feedback-card-3 {
+    top: 50%;
+    left: 50%;
+    transform: translate(
+      calc(
+        80% + 48px + clamp(0px, 10.46vw - 107.11px, 100px)
+      ),
+      calc(-70% - 150px + 100px - clamp(0px, 4.18vw - 42.84px, 40px))
+    );
+  }
+  
+  .feedback-card-3:hover {
+    transform: translate(
+      calc(
+        80% + 48px + clamp(0px, 10.46vw - 107.11px, 100px)
+      ),
+      calc(-70% - 150px + 100px - clamp(0px, 4.18vw - 42.84px, 40px) - 8px)
+    );
+  }
+  
+  /* Card 4: "You have this amazing ability"
+     - At 1024px: x = 100%, y = 50% + 40px
+     - At 1980px: x = 100% + 100px (right 100px), y = 50% + 90px (down 50px)
+  */
+  .feedback-card-4 {
+    top: 50%;
+    left: 50%;
+    transform: translate(
+      calc(100% + clamp(0px, 10.46vw - 107.11px, 100px)),
+      calc(50% + 40px + clamp(0px, 5.23vw - 53.55px, 50px))
+    );
+  }
+  
+  .feedback-card-4:hover {
+    transform: translate(
+      calc(100% + clamp(0px, 10.46vw - 107.11px, 100px)),
+      calc(50% + 40px + clamp(0px, 5.23vw - 53.55px, 50px) - 8px)
+    );
+  }
+}
+
+/* Hide 2 cards on tablets */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .feedback-card-3,
+  .feedback-card-4 {
+    display: none;
+  }
+  
+  .feedback-card-1 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-150%, -80%);
+  }
+  
+  .feedback-card-1:hover {
+    transform: translate(-150%, calc(-80% - 8px));
+  }
+  
+  .feedback-card-2 {
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, -40%);
+  }
+  
+  .feedback-card-2:hover {
+    transform: translate(50%, calc(-40% - 8px));
+  }
+}
+
+/* Mobile: Vertical stack layout */
+@media (max-width: 767px) {
+  .stacked-hero-section {
+    min-height: auto;
+    padding: 40px 0;
+  }
+  
+  .stacked-hero-container {
+    min-height: auto;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .hero-content-box {
+    order: 1;
+    padding: 0;
+    margin-bottom: 32px;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .stacked-feedback-cards {
+    position: relative;
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    height: auto;
+    pointer-events: auto;
+    padding-top: 20px;
+  }
+  
+  .feedback-card-layered {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+  
+  .feedback-card-1,
+  .feedback-card-2 {
+    display: block;
+  }
+  
+  .feedback-card-3,
+  .feedback-card-4 {
+    display: none;
+  }
+}
+</style>
+
 <script>window['_fs_host'] = 'fullstory.com';
   window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
   window['_fs_org'] = 'o-22FQ3A-na1';
@@ -64,55 +504,71 @@
 
   <!-- Main Content -->
   <main class="main-content">
-    <!-- Hero Section with Artistic Background -->
-    <section class="hero-section-new" id="hero-parallax">
-      <div class="hero-background">
-        <div class="hero-overlay"></div>
-      </div>
-      <div class="hero-container">
-        <div class="hero-content">
-          <h1 class="hero-title-new serif">Kyle Boyd</h1>
-          <p class="hero-subtitle-new serif">I'm a designer building in product & systems for enterprise solutions.</p>
+    <!-- Stacked Hero Section -->
+    <section class="stacked-hero-section">
+      <div class="stacked-hero-container">
+        <!-- Back Layer -->
+        <img
+          src="images/heroImages/herostackback_1x.webp"
+          srcset="images/heroImages/herostackback_1x.webp 1x, images/heroImages/herostackback_2x.webp 2x"
+          alt="Hero Background"
+          class="hero-stack-layer hero-stack-back"
+        >
+        
+        <!-- Mid Layer -->
+        <img
+          src="images/heroImages/herostackmid_1x.webp"
+          srcset="images/heroImages/herostackmid_1x.webp 1x, images/heroImages/herostackmid_2x.webp 2x"
+          alt="Hero Middle"
+          class="hero-stack-layer hero-stack-mid"
+        >
+        
+        <!-- Front Layer -->
+        <img
+          src="images/heroImages/herostackfront_1x.webp"
+          srcset="images/heroImages/herostackfront_1x.webp 1x, images/heroImages/herostackfront_2x.webp 2x"
+          alt="Hero Front"
+          class="hero-stack-layer hero-stack-front"
+        >
+        
+        <!-- Central Content Box -->
+        <div class="hero-content-box">
+          <h1 class="hero-headline">Hello, I'm Kyle.</h1>
+          <p class="hero-subtext">I'm a <em>designer</em> building in product & systems for enterprise solutions.</p>
+          <a href="#work" class="hero-cta">
+            View My Work
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
         
-        <!-- What People Say Section (inside hero) -->
-        <div class="testimonials-in-hero">
-          <div class="testimonials-container">
-            <h2 class="section-title-left">What people say about me</h2>
-            <div class="testimonials-grid">
-            <div class="testimonial-card">
-              <p class="testimonial-text">Kyle has a knack for seeing to the core of a problem, solving issues methodically, but not losing sight of the end goal.</p>
-              <div class="testimonial-author">
-                <div class="author-avatar"></div>
-                <div class="author-info">
-                  <div class="author-name">Sarah Johnson</div>
-                  <div class="author-role">Product Manager</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card">
-              <p class="testimonial-text">Kyle never ceases for seeing to the core of a problem and continuously challenges traditional solutions for the end user's benefit.</p>
-              <div class="testimonial-author">
-                <div class="author-avatar"></div>
-                <div class="author-info">
-                  <div class="author-name">Michael Chen</div>
-                  <div class="author-role">Engineering Lead</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card">
-              <p class="testimonial-text">Kyle has a knack for seeing to the core of a problem, solving issues methodically, but not losing sight of the end goal.</p>
-              <div class="testimonial-author">
-                <div class="author-avatar"></div>
-                <div class="author-info">
-                  <div class="author-name">Emma Davis</div>
-                  <div class="author-role">Design Director</div>
-                </div>
-              </div>
-            </div>
+        <!-- Layered Feedback Cards -->
+        <div class="stacked-feedback-cards">
+          <!-- Card 1: Between mid and front (behind herostackfront, in front of herostackmid) -->
+          <div class="feedback-card-layered feedback-card-between feedback-card-1">
+            <p class="feedback-card-text">You have a knack for seeing to the core of a problem and addressing it head on. You've been an ally for the eng team!</p>
+            <p class="feedback-card-author">Jim, Staff Software Engineer</p>
+          </div>
+          
+          <!-- Card 2: Very front (above herostackfront) -->
+          <div class="feedback-card-layered feedback-card-very-front feedback-card-2">
+            <p class="feedback-card-text">You seamlessly flex from creative, big picture thinking to in-the-weeds logic</p>
+            <p class="feedback-card-author">Morgan, Group Product Manager</p>
+          </div>
+          
+          <!-- Card 3: Behind midstack -->
+          <div class="feedback-card-layered feedback-card-behind feedback-card-3">
+            <p class="feedback-card-text">I could not ask for a better design partner than Kyle. It is a joy to work with someone who supports his peers, but isn't afraid to challenge design solutions</p>
+            <p class="feedback-card-author">Sandhya, Senior Product Designer</p>
+          </div>
+          
+          <!-- Card 4: In front of text (higher z-index with deep shadow) -->
+          <div class="feedback-card-layered feedback-card-front feedback-card-4">
+            <p class="feedback-card-text">You have this amazing ability to take an exorbitant amount of information and magically produce totally streamlined solutions!</p>
+            <p class="feedback-card-author">Carly, Product Manager</p>
           </div>
         </div>
-      </div>
       </div>
     </section>
 

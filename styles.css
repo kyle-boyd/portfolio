@@ -572,7 +572,7 @@ font-weight: normal;
 
 /* Modern Portfolio Styles */
 :root {
-  --black: #212121;
+  --black: #393C32;
   --white: #F4F4F4;
   --gray-light: #999999;
   --gray-dark: #333333;
@@ -600,8 +600,8 @@ font-weight: normal;
 }
 
 .menu-container {
-  max-width: calc(100% - 96px);
-  margin: 0 48px;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
