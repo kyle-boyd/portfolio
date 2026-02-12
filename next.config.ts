@@ -6,8 +6,8 @@ const nextConfig: NextConfig = {
     root: path.resolve(__dirname),
   },
   output: "export",
-  basePath: process.env.NODE_ENV === "production" ? "/portfoliotest" : "",
-  assetPrefix: process.env.NODE_ENV === "production" ? "/portfoliotest/" : "",
+  basePath: process.env.NODE_ENV === "production" ? "/portfolio" : "",
+  assetPrefix: process.env.NODE_ENV === "production" ? "/portfolio/" : "",
   images: { unoptimized: true },
 };
 
