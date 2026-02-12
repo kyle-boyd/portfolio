@@ -155,19 +155,19 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         body: "Lighthouse is a web-based application designed to model all of Google's global office space 10 years into the future. Built to meet the needs of real estate planners and analysts at Google Real Estate and Workplace Services (REWS), it transitions their workflows from a spreadsheet-based system to a more robust and user-friendly web-based platform. The result? Lighthouse enabled 50% faster report generation for the planners and forecasters, transforming how Google manages hundreds of millions of square feet of office space worldwide.",
       },
       {
-        image: "/images/lh_TPP.png",
+        image: "/images/lighthouse/lhtpp.avif",
         caption: "Existing tool that Google planners use (Sheets)",
         title: "Background (Spreadsheet mania)",
         body: "Currently Google models their hundreds of millions of square feet of global office space and millions of employees in a collection of Google Sheets files. The global group of planners who are modeling supply and demand scenarios to study long-term requirements of office space needed a more streamlined, consistent, and fast approach. Pain points included: infinitely configurable (no guardrails), lack of automation (tedious, manual process), no data hierarchy and minimal organization, and no filtering available.",
       },
       {
-        image: "/images/lh_view.png",
+        image: "/images/lighthouse/lhview.avif",
         caption: "Side panel allowing users to quickly show & hide relevant data",
         title: "Approach",
         body: "With two primary goals—streamlining modeling processes and improving data visualization—I took the following approach: Mapped Existing Pain Points by conducting user research with Google planners to understand the workflow and prioritize solutions. Simplified Operations by designing a logical set of operations to enable consistent forecasting and scenario modeling. Crafted Visual Hierarchy & Feedback so interfaces highlighted data relationships, recent changes, and high-level insights at a glance.",
       },
       {
-        image: "/images/lh_dataheirarchy.png",
+        image: "/images/lighthouse/lhdataheirarchy.avif",
         caption: "Clear data hierarchy",
         title: "Clear data hierarchy",
         body: "Organized structure for complex planning data.",
@@ -175,7 +175,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         imagePosition: "right",
       },
       {
-        image: "/images/lh_filtering.png",
+        image: "/images/lighthouse/lhfiltering.avif",
         caption: "Global and local filtering",
         title: "Global & local filtering",
         body: "Flexible filtering and sorting at multiple levels.",
@@ -183,7 +183,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         imagePosition: "right",
       },
       {
-        image: "/images/lh_logic.png",
+        image: "/images/lighthouse/lhlogic.avif",
         caption: "Simple customization logic",
         title: "Simple & powerful logic",
         body: "Intuitive customization without complexity.",
@@ -191,7 +191,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         imagePosition: "right",
       },
       {
-        image: "/images/lh_visualcues.png",
+        image: "/images/lighthouse/lhvisualcues.avif",
         caption: "Visual cues for customizations",
         title: "Visual cues",
         body: "Clear indicators for customizations and changes.",
@@ -199,13 +199,13 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         imagePosition: "right",
       },
       {
-        image: "/images/lh_designsystem.png",
+        image: "/images/lighthouse/lhdesignsystem.avif",
         caption: "Design system components",
         title: "Design system",
         body: "I was working within the Google Material design system, with a specific UI overlay on top of the default Material 2 library for REWS products. This system was not fully fleshed out, so throughout the course of development I had to create and manage some additional components. Because of very tight build timelines, all of the components used had to be rigorously consistent with what is available in the existing Angular and React libraries.",
       },
       {
-        image: "/images/lh_initial.png",
+        image: "/images/lighthouse/lhinitial.avif",
         caption: "Prototype showing a user making a forecast growth modification",
         title: "Impact & results",
         body: "The Lighthouse application introduced several significant improvements: Automated Calculations—blended sharing ratios are now automatically calculated, saving planners up to 50% of their time preparing reports. Enhanced Data Visibility—a toggle feature allows users to easily switch views. Rule-Based Adjustment—users can apply rule-based calculations across multiple periods. Consistent UI Across Regions—a standardized UI improves usability. Upstream Data Integration—direct integration with upstream data sources eliminates manual linking.",
