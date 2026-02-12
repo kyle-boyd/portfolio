@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Crimson_Text, Geist, Geist_Mono, Outfit } from "next/font/google";
+import { basePath } from "@/lib/base-path";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -28,10 +29,7 @@ export const metadata: Metadata = {
   description:
     "Product designer based in Denver, Colorado. Building in product & systems for enterprise solutions.",
   icons: {
-    icon:
-      process.env.NODE_ENV === "production"
-        ? "/portfoliotest/images/kbLogo.svg"
-        : "/images/kbLogo.svg",
+    icon: `${basePath || ""}/images/kbLogo.svg`,
   },
 };
 
