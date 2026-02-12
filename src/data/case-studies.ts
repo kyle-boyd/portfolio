@@ -180,7 +180,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         title: "Global & local filtering",
         body: "Flexible filtering and sorting at multiple levels.",
         layout: "design-response",
-        imagePosition: "right",
+        imagePosition: "left",
       },
       {
         image: "/images/lighthouse/lhlogic.avif",
@@ -196,7 +196,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         title: "Visual cues",
         body: "Clear indicators for customizations and changes.",
         layout: "design-response",
-        imagePosition: "right",
+        imagePosition: "left",
       },
       {
         image: "/images/lighthouse/lhdesignsystem.avif",
