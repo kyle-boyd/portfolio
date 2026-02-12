@@ -306,7 +306,6 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
                 <div className={`${itemGridClasses}`}>
                   {study.impact.outcomes.map((outcome, i) => (
                     <div key={i} className={itemRowClasses}>
-                      <OutcomeCheckIcon />
                       <div className="min-w-0 space-y-1">
                         <p className="font-bold text-zinc-100">{outcome.title}</p>
                         <p className="text-base leading-relaxed text-zinc-300">
@@ -318,7 +317,7 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
                 </div>
               )}
               {study.impact.measurement && (
-                <p className="text-sm text-zinc-400">
+                <p className="py-6 text-sm text-zinc-400">
                   <em>{study.impact.measurement}</em>
                 </p>
               )}

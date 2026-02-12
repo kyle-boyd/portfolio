@@ -300,7 +300,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
     },
     sections: [
       {
-        image: "/images/slabds_buttons.png",
+        image: "/images/acelabds/slabdsbuttons.avif",
         caption: "The variety of action buttons currently on the platform",
         title: "Building a robust design system at Acelab",
         body: "When I started at Acelab, the existing design system was minimal—essentially branding guidelines with basic button styles. As the application grew more complex, inconsistencies emerged, even within the limited design system in place. Recognizing the need for a more comprehensive approach, I advocated for the development of a robust design system to address these challenges and promote greater adherence to design standards.",
@@ -310,7 +310,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         body: "To determine the best path forward, I considered a variety of prebuilt design systems as well as the possibility of developing our own from scratch. My criteria included: Simplicity, Figma Compatibility, and Scalability. After extensive research, I identified that many of the well-known design systems were either too complex for our needs or lacked adaptable Figma files. I ultimately chose to build upon the design system provided by Practical UI.",
       },
       {
-        image: "/images/slabds_annotation.png",
+        image: "/images/acelabds/slabdsannotation.avif",
         caption: "Design token architecture",
         title: "Educating and collaborating with engineering",
         body: "To ensure successful implementation, I started by educating our engineering team about the benefits of a robust design system. Design Tokens: Given our tech stack—Vue, Tailwind, and CSS—I exported Figma variables to JSON and demonstrated their practical use cases. We began rolling out components incrementally, transitioning to the new design system while addressing gaps and ensuring alignment between design and engineering.",
@@ -322,7 +322,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         body: "Aside from implementing our basic fonts and colors, I also embarked on creating some components that were unique to our platform. For example, making some enhancements to the Side Navigation and adding some additional functionality like dropdowns and selectors.",
       },
       {
-        image: "/images/slabds_progressmodal.png",
+        image: "/images/acelabds/slabdsprogressmodal.avif",
         caption: "Atomic components combined into a Modal",
         title: "Early results and progress",
         body: "While the full implementation of the design system is ongoing, we have already seen significant improvements: Consistency—components across the application are becoming more uniform. Efficiency—communication between design and engineering has become more streamlined. Scalability—the system is equipped to handle our growing application needs with minimal additional effort.",
