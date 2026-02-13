@@ -339,7 +339,7 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
             className="my-16 text-[32px] font-semibold leading-tight text-zinc-50"
             style={{ fontFamily: "var(--font-crimson)" }}
           >
-            {hero.subtitle}
+            {hero.title}
           </h1>
           {study.impact && (study.impact.outcomes?.length || study.impact.measurement) ? (
             <div className="max-w-[900px] space-y-4">
@@ -382,7 +382,7 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
           <div className="border-t border-white/10 py-8">
             <CaseStudyImage
               src={study.heroImage}
-              alt={study.hero.subtitle}
+              alt={study.hero.title}
               lightbox
             />
           </div>

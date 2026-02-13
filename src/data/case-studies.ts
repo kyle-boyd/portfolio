@@ -75,7 +75,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
   clay: {
     slug: "clay",
     hero: {
-      title: "Clay Home",
+      title: "Designing a central hub that unified disparate tools for Google office renovation projects.",
       subtitle: "Creating a home base for a programming and schematic design application",
       description:
         "The Clay app was developed to streamline collaborative office renovation projects for Google, integrating various disparate applications into a cohesive platform. By establishing intuitive navigation, robust search functionality, and version control capabilities inspired by Google Drive, the home feature provides a seamless experience for Project Executives, Analysts, architects, and interior designers.",
@@ -138,7 +138,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
   lighthouse: {
     slug: "lighthouse",
     hero: {
-      title: "Lighthouse",
+      title: "I redesigned real estate planning tools that enabled 50% faster report generation for Google REWS.",
       subtitle: "Enhancing real estate demand modeling for Google's global office portfolio",
       description:
         "Lighthouse is a web-based application designed to model all of Google's global office space 10 years into the future. Built to meet the needs of real estate planners and analysts at Google Real Estate and Workplace Services (REWS), it transitions their workflows from a spreadsheet-based system to a more robust and user-friendly web-based platform. The result? Lighthouse enabled 50% faster report generation for the planners and forecasters.",
@@ -223,7 +223,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
   acelab: {
     slug: "acelab",
     hero: {
-      title: "Acelab",
+      title: "I redesigned Acelab's navigation to match how architects actually work.",
       subtitle: "I started with a UI refresh. I shipped a navigation overhaul that's still in use today.",
       description:
         "When I joined Acelab, my mandate was simple: \"Update the UI.\" Within weeks, I'd identified a deeper problem: the navigation architecture hadn't scaled with the product. Users couldn't find features. Internal teams didn't know certain tools existed. I pitched, and shipped, a complete navigation overhaul that helped establish product-market fit, contributing to Acelab's $13.5M Series A funding.",
@@ -332,7 +332,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
   "slab-design-system": {
     slug: "slab-design-system",
     hero: {
-      title: "A Slab Design System",
+      title: "Building and scaling a design system that increased consistency and efficiency at Acelab.",
       subtitle: "Building and scaling a design system",
       description: "Increasing design & engineering efficiency and leveling up the visual design at Acelab.",
     },
@@ -391,7 +391,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
   calibrator: {
     slug: "calibrator",
     hero: {
-      title: "Calibrator",
+      title: "I designed a comparison feature for Google's historical construction costs database.",
       subtitle: "A historical construction costs and comparison tool",
       description: "Designing a comparison feature for a historical construction costs database.",
     },
@@ -441,7 +441,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
   syncrofy: {
     slug: "syncrofy",
     hero: {
-      title: "Syncrofy File Transfer",
+      title: "Redesigning filtering to handle 200,000+ enterprise data transfers per hour without overwhelming users.",
       subtitle: "Designing a Scalable Filtering System for Syncrofy FT",
       description:
         "Designing a scalable filtering system for Syncrofy FT, handling 200,000+ enterprise data transfers per hour. Reduced cognitive overload via progressive disclosure while maintaining 100% feature parity.",
@@ -632,7 +632,7 @@ function workItemsForSlugs(slugs: readonly string[]): SelectedWorkItem[] {
       .join(" / ");
     return {
       slug,
-      title: study.hero.subtitle,
+      title: study.hero.title,
       client: clientLine || study.hero.title,
       description: study.hero.description,
       year: PROJECT_YEARS[slug] ?? "2024",
