@@ -28,6 +28,12 @@ export type CaseStudySection = {
   layout?: "design-response";
   /** For design-response layout: "left" | "right" - which side the image appears on */
   imagePosition?: "left" | "right";
+  /** Optional block of pull quotes rendered in a styled block (e.g. light serif) */
+  quotes?: string[];
+  /** Optional attribution shown below quotes (e.g. "— Director of Product") */
+  quoteAttribution?: string;
+  /** When true, section is a subsection of the previous section (no divider, Outfit title) */
+  subsection?: boolean;
 };
 
 export type CaseStudyImpact = {
@@ -43,6 +49,8 @@ export type CaseStudy = {
     subtitle: string;
     description: string;
   };
+  /** Optional hero image shown above the first section (e.g. above Context) */
+  heroImage?: string;
   meta: CaseStudyMeta;
   cardImage: string;
   themeColor: string;
@@ -216,63 +224,108 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
     slug: "acelab",
     hero: {
       title: "Acelab",
-      subtitle: "Revamping Acelab's navigation: a UX overhaul",
+      subtitle: "I started with a UI refresh. I shipped a navigation overhaul that's still in use today.",
       description:
-        "A comprehensive redesign of Acelab's navigation system to address usability issues and improve the overall user experience. The project focused on creating an intuitive navigation structure that would better serve architects and designers using the platform, resulting in 70% reduction in dead-end clicks and significantly improved user satisfaction.",
+        "When I joined Acelab, my mandate was simple: \"Update the UI.\" Within weeks, I'd identified a deeper problem: the navigation architecture hadn't scaled with the product. Users couldn't find features. Internal teams didn't know certain tools existed. I pitched, and shipped, a complete navigation overhaul that helped establish product-market fit, contributing to Acelab's $13.5M Series A funding.",
     },
+    heroImage: "/images/acelab_navigation/acelabhero.avif",
     meta: {
-      role: "UX Designer",
+      role: "Lead UX Designer · ~3 months · Launch late 2024",
       employer: "Acelab",
       areas: "UX/UI, Navigation, Research",
       teamScope: "Led navigation redesign; collaborated with product, engineering, and internal stakeholders. Validated with power users and architects.",
     },
     cardImage: "/images/projectimages/acelabmain.avif",
     themeColor: "#475569",
-    impact: {
-      measurement: "70% reduction in dead-end clicks measured via analytics over 8 weeks post-launch; validated through user feedback from architects and designers.",
-    },
     sections: [
       {
-        image: "/images/acelab_navigation/previous_navigation.png",
-        caption: "Shows the original, fragmented navigation issues",
-        title: "Identifying the problem",
-        body: "Through a comprehensive platform audit and user feedback, we uncovered several critical issues with Acelab's navigation system: Inconsistent navigation patterns across different sections of the platform; accessibility issues that made features difficult to find, even for internal teams; fragmented growth of navigation elements over time; unintuitive movement across the platform.",
+        title: "Context",
+        body: "When I joined Acelab, my mandate was simple: \"Update the UI.\" Within weeks, I'd identified a deeper problem: the navigation architecture hadn't scaled with the product. Users couldn't find features. Internal teams didn't know certain tools existed. I pitched, and shipped, a complete navigation overhaul that helped establish product-market fit, contributing to Acelab's $13.5M Series A funding.",
       },
       {
-        image: "/images/acelab_navigation/ui_options.png",
-        caption: "UI exploration for different navigation layouts",
-        title: "Defining the solution",
-        body: "After mapping out the navigation issues, I advocated for a complete overhaul and proposed three potential concepts: Top Navigation Only (simple but limited space), Left Navigation Only (more scalable but required significant structural changes), Combined Left & Top Navigation (balanced usability and familiarity—final choice). The final decision was validated through internal workshops and testing with power users.",
+        image: "/images/acelab_navigation/acelabpreviousnavigation.avif",
+        caption: "Legacy navigation varied by view and hid project context",
+        title: "The Problem: Navigation Had Never Scaled",
+        body: "",
+        intro:
+          "Through platform audits and internal interviews, I identified four critical friction points:",
+        problems: [
+          {
+            title: "Inconsistent context.",
+            body: "Menus changed based on the current view. Users couldn't build a repeatable mental map of where to find things.",
+          },
+          {
+            title: "The \"Project Ghost\" state.",
+            body: "Users would enter a project workspace, but the visual indicator would disappear. They lost track of whether they were editing a specific project or viewing global resources.",
+          },
+          {
+            title: "Missing professional context.",
+            body: "Project selectors showed only project names. Architects manage workflows via Project Numbers; this omission made the tool feel amateur to professional firms.",
+          },
+          {
+            title: "The top-nav ceiling.",
+            body: "The platform exclusively used horizontal top navigation. It had reached capacity. Adding features meant burying them in \"More...\" menus that users ignored.",
+          },
+        ],
       },
       {
-        image: "/images/acelab_navigation/lofi_topNav.png",
-        caption: "Top Navigation Only concept",
-        title: "Navigation concepts",
-        body: "Three concepts were explored: top nav only, left nav only, and combined left and top navigation.",
+        image: "/images/acelab_navigation/acelaboptions.avif",
+        title: "Research: Validating Direction Without a Research Budget",
+        body: "After creating a handful of concepts, the team initially favored a direction inspired by consumer products—clean, minimal, lots of whitespace.\n\nI conducted 8 conversational interviews with architects across firm types and sizes, from boutique residential practices to global firms like Gensler. Some were existing Acelab users; others were contacts in my network I recruited to get outside perspective.",
       },
       {
-        image: "/images/acelab_navigation/home_prototype.png",
-        caption: "Testing navigation within the updated home experience",
-        title: "Iterating & Refining",
-        body: "As the UI redesign progressed alongside navigation changes, we discovered through user testing that internal team preferences differed significantly from those of real users (architects and designers). This insight led us to pivot our approach to better align with actual user needs rather than internal assumptions. We conducted additional testing with target users to ensure our solution would address their specific pain points and workflows.",
+        image: "/images/acelab_navigation/acelablofioptions.avif",
+        caption: "Lo-fi prototypes used in architect interviews",
+        title: "",
+        body: "I walked them through lo-fi clickable prototypes showing different navigation patterns and aesthetic directions. When presenting the direction our team was set on, the feedback was consistent:",
+        quotes: [
+          "I don't trust this at all.",
+          "It feels too young or modern.",
+          "It doesn't feel like I know if the information will be trustworthy.",
+        ],
+        bodyTail: "Architects spend their days in dense, data-heavy tools like Revit and Bluebeam. They don't need lifestyle branding; they need professional utility that signals competence at a glance.",
       },
       {
-        image: "/images/acelab_navigation/sidePanel.png",
-        caption: "Showcases the collapsible side navigation solution",
-        title: "Overcoming constraints",
-        body: "A full platform redesign was infeasible due to time and resource constraints. Instead, we collaborated closely with the engineering team to integrate the new navigation system within the existing screen structures. The solution was to introduce a collapsible left navigation that could be expanded when needed and collapsed to maximize screen real estate. This approach maintained flexibility without requiring a complete overhaul of the entire UI.",
+        image: "/images/acelab_navigation/acelabsidenavoverlay.avif",
+        caption: "Exploring hybrid navigation: top nav + persistent sidebar",
+        title: "Strategy: Advocating for Professional Density",
+        body: "For professional users managing complex projects across multiple stakeholders, visual minimalism can signal superficiality. Dense, well-organized navigation communicates capability. This created a design tension: the CEO prioritized global search (which worked best in a clean top nav), while feature discoverability needed persistent, visible structure.\n\nThe solution: **Hybrid navigation.** This gave both priorities room to breathe while respecting how architects actually work.",
       },
       {
-        image: "/images/acelab_navigation/projectSelection_Notification.png",
-        caption: "Demonstrates the final navigation with project selection and notifications",
-        title: "Final outcome & impact",
-        body: "The redesigned navigation system delivered several key improvements: Side Navigation with Expanded/Collapsed States—improved accessibility while maintaining screen real estate. Quick Project Selector—enabled faster access to frequently used projects. Updated Notification Panel—enhanced visibility of important updates. 70% Reduction in Dead-End Clicks—significantly reduced user frustration. Overwhelmingly positive feedback from users.",
+        title: "Execution: Scoping for Impact Within Timeline Constraints",
+        body: "The CEO was pushing to ship features rapidly. A full platform rewrite wasn't feasible. I worked with Engineering to define a \"Canvas\" approach: a new global navigation frame that wrapped existing page content.\n\nThis allowed us to:\n\n• Ship high-impact navigation changes without blocking feature development\n• Establish a design system foundation that could be applied incrementally to inner pages\n• Validate the mental model (hybrid nav, persistent project context) before deeper refactoring",
       },
       {
-        image: "/images/acelab_navigation/products_prototype.png",
-        caption: "Testing how navigation impacts product browsing",
-        title: "Key takeaways",
-        body: "Research-driven design leads to better user adoption. Balancing ambition with feasibility ensures smoother implementation. Cross-functional collaboration was crucial to delivering an intuitive navigation system that met both user needs and technical requirements.",
+        image: "/images/acelab_navigation/acelabprojectseletor.avif",
+        title: "Persistent project context",
+        body: "The project selector now displays project numbers, the way architects actually identify work, eliminating the \"ghost state\" where users lost track of which project they were in.",
+        subsection: true,
+      },
+      {
+        image: "/images/acelab_navigation/acelabsidenav.avif",
+        title: "Stable navigation",
+        body: "The sidebar stays consistent across the platform, giving users a reliable \"home base\" regardless of page depth.",
+        subsection: true,
+      },
+      {
+        image: "/images/acelab_navigation/acelabsidenavcollapsed.avif",
+        title: "Professional density",
+        body: "Information-rich layouts that favored utility over empty space.",
+        subsection: true,
+      },
+      {
+        beforeAfter: {
+          old: "/images/acelab_navigation/acelabold.avif",
+          new: "/images/acelab_navigation/acelabnew.avif",
+        },
+        caption: "Final navigation: project selector with numbers, stable sidebar",
+        title: "Outcome: Durability and Business Impact",
+        body: "The navigation and design system launched in late 2024 and remain in use today. Internal feedback validated the approach:",
+        quotes: [
+          "We've gotten lots of good feedback on the UX/UI and overall flow... the designs have gotten very good feedback, and I hope you are proud of them.",
+        ],
+        quoteAttribution: "— Director of Product",
+        bodyTail: "In early 2025, Acelab announced $13.5M in Series A funding led by Navitas Capital, with participation from strategic investors including JLL Spark, architects from BIG (Bjarke Ingels Group) and SHoP Architects, and returning investors Pillar VC and Draper Associates.\n\nWhile navigation wasn't the sole driver, it demonstrated to professional users, and investors, that Acelab understood the workflows and mental models of architects.",
       },
     ],
   },

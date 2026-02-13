@@ -123,22 +123,30 @@ function SectionBlock({
   section,
   isGroupTitle,
   compactTop,
+  compactBottom,
+  lastSubsection,
+  useOutfitFont,
 }: {
   section: CaseStudySection;
   isGroupTitle?: boolean;
   compactTop?: boolean;
+  compactBottom?: boolean;
+  lastSubsection?: boolean;
+  useOutfitFont?: boolean;
 }) {
   const hasProblems = section.problems && section.problems.length > 0;
   const hasOutcomes = section.outcomes && section.outcomes.length > 0;
+  const hasQuotes = section.quotes && section.quotes.length > 0;
   const isDesignResponse = section.layout === "design-response";
   const imageOnRight = section.imagePosition !== "left";
+  const titleFont = useOutfitFont ? "var(--font-outfit)" : "var(--font-crimson)";
 
   if (isGroupTitle) {
     return (
       <section className="pb-4 pt-12 sm:pt-16">
         <h2
           className="text-[28px] font-semibold leading-tight text-zinc-50 sm:text-[24px]"
-          style={{ fontFamily: "var(--font-crimson)" }}
+          style={{ fontFamily: titleFont }}
         >
           {section.title}
         </h2>
@@ -146,15 +154,23 @@ function SectionBlock({
     );
   }
 
-  const sectionPadding = compactTop ? "pt-6 sm:pt-8 pb-12 sm:pb-16" : "py-12 sm:py-16";
+  const sectionPadding = section.subsection
+    ? lastSubsection
+      ? "pt-2 pb-16"
+      : "py-2"
+    : compactBottom
+      ? "pt-12 sm:pt-16 pb-8"
+      : compactTop
+        ? "pt-6 sm:pt-8 pb-12 sm:pb-16"
+        : "py-12 sm:py-16";
 
   return (
     <section className={`space-y-4 ${sectionPadding}`}>
       <div className="space-y-3">
-        {!isDesignResponse && (
+        {!isDesignResponse && section.title && (
           <h3
-            className="text-[24px] font-semibold text-zinc-50 mt-6 mb-6"
-            style={{ fontFamily: "var(--font-crimson)" }}
+            className={`font-semibold text-zinc-50 mt-6 mb-6 ${useOutfitFont ? "text-[18px]" : "text-[24px]"}`}
+            style={{ fontFamily: titleFont }}
           >
             {section.title}
           </h3>
@@ -168,7 +184,7 @@ function SectionBlock({
             <div className="min-w-0 flex-1 space-y-4">
               <h3
                 className="text-[24px] font-semibold text-zinc-50"
-                style={{ fontFamily: "var(--font-crimson)" }}
+                style={{ fontFamily: titleFont }}
               >
                 {section.title}
               </h3>
@@ -229,6 +245,37 @@ function SectionBlock({
               </div>
             ))}
           </div>
+        ) : hasQuotes ? (
+          <>
+            {section.body && (
+              <p className="text-base leading-relaxed text-zinc-300 whitespace-pre-line max-w-[900px]">
+                <BodyWithBold text={section.body} />
+              </p>
+            )}
+            <div
+              className="space-y-4 rounded-xl bg-zinc-950/50 px-6 py-5 max-w-[900px]"
+              style={{ fontFamily: "var(--font-crimson-pro-light)" }}
+            >
+              {section.quotes!.map((quote, i) => (
+                <blockquote
+                  key={i}
+                  className="text-lg italic leading-relaxed text-zinc-300"
+                >
+                  &ldquo;{quote}&rdquo;
+                </blockquote>
+              ))}
+              {section.quoteAttribution && (
+                <footer className="text-base not-italic text-zinc-400">
+                  {section.quoteAttribution}
+                </footer>
+              )}
+            </div>
+            {section.bodyTail && (
+              <p className="text-base leading-relaxed text-zinc-300 max-w-[900px] pt-2">
+                {section.bodyTail}
+              </p>
+            )}
+          </>
         ) : (
           <p className="text-base leading-relaxed text-zinc-300 whitespace-pre-line max-w-[900px]">
             <BodyWithBold text={section.body} />
@@ -330,6 +377,17 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
           <MetaGrid meta={meta} />
         </div>
 
+        {/* Hero image (optional, above first section) */}
+        {study.heroImage && (
+          <div className="border-t border-white/10 py-8">
+            <CaseStudyImage
+              src={study.heroImage}
+              alt={study.hero.subtitle}
+              lightbox
+            />
+          </div>
+        )}
+
         {/* Sections */}
         <div>
           {sections.map((section, i) => {
@@ -339,6 +397,7 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
               isTitleOnlySection(section) && next?.layout === "design-response";
             const showTopDivider =
               i > 0 &&
+              !section.subsection &&
               !(
                 section.layout === "design-response" &&
                 (prev?.layout === "design-response" || isTitleOnlySection(prev))
@@ -347,6 +406,9 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
               section.layout === "design-response" &&
               !showTopDivider &&
               i > 0;
+            const useOutfitFont = section.subsection;
+            const compactBottom = next?.subsection === true;
+            const lastSubsection = section.subsection && !next?.subsection;
 
             return (
               <div
@@ -357,6 +419,9 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
                   section={section}
                   isGroupTitle={isGroupTitle}
                   compactTop={compactTop}
+                  compactBottom={compactBottom}
+                  lastSubsection={lastSubsection}
+                  useOutfitFont={useOutfitFont}
                 />
               </div>
             );

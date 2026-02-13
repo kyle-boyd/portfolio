@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Crimson_Text, Geist, Geist_Mono, Outfit } from "next/font/google";
+import { Crimson_Pro, Crimson_Text, Geist, Geist_Mono, Outfit } from "next/font/google";
 import Script from "next/script";
 import { basePath } from "@/lib/base-path";
 import "./globals.css";
@@ -20,6 +20,12 @@ const crimsonText = Crimson_Text({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-crimson",
+});
+
+const crimsonProLight = Crimson_Pro({
+  weight: "300",
+  subsets: ["latin"],
+  variable: "--font-crimson-pro-light",
 });
 
 const outfit = Outfit({
@@ -44,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${crimsonText.variable} ${outfit.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${crimsonText.variable} ${crimsonProLight.variable} ${outfit.variable} antialiased`}
       >
         <Script id="fullstory" strategy="afterInteractive">
           {`

@@ -57,7 +57,7 @@ export function Lightbox({ src, alt, onClose }: LightboxProps) {
         className="flex min-h-0 min-w-0 flex-1 items-center justify-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex size-full max-h-[calc(100vh-2rem)] max-w-[calc(100vw-2rem)] items-center justify-center">
+        <div className="flex size-full max-h-[90vh] max-w-[90vw] items-center justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={src}
