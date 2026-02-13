@@ -1,7 +1,7 @@
 "use client";
 
 import { assetUrl } from "@/lib/base-path";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { useRef, type RefObject } from "react";
 
 export type ProjectCardProps = {

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import type { CaseStudy, CaseStudyMeta, CaseStudySection } from "@/data/case-studies";
 import { BeforeAfterImage } from "@/components/before-after-image";
 import { CaseStudyImage } from "@/components/case-study-image";

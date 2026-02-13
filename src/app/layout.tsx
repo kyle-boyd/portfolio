@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Crimson_Pro, Crimson_Text, Geist, Geist_Mono, Outfit } from "next/font/google";
 import Script from "next/script";
+import { ViewTransitions } from "next-view-transitions";
 import { basePath } from "@/lib/base-path";
 import "./globals.css";
 
@@ -92,7 +93,9 @@ f="XMLHttpRequest",g._w={},g._w[f]=m[f],g._w[s]=m[s],m[s]&&(m[s]=function(){retu
             </Script>
           </>
         )}
-        {children}
+        <ViewTransitions>
+          {children}
+        </ViewTransitions>
       </body>
     </html>
   );
