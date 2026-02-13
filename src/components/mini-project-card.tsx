@@ -82,7 +82,7 @@ export function MiniProjectCard({
       >
         <div
           ref={innerGlowRef}
-          className="relative aspect-[2880/1808] rounded-[8px] transition-[box-shadow] duration-300"
+          className="relative aspect-[2880/1808] overflow-hidden rounded-[8px] transition-[box-shadow] duration-300"
           style={{
             boxShadow: `0 0 0 0 rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0)`,
           }}
@@ -90,7 +90,7 @@ export function MiniProjectCard({
           <img
             src={assetUrl(image)}
             alt={title}
-            className="project-card-image size-full object-cover transition-all duration-300 border border-white/15 rounded-[8px]"
+            className="project-card-image size-full object-cover transition-all duration-300 border border-white/15 rounded-[8px] group-hover:scale-105"
           />
         </div>
       </div>

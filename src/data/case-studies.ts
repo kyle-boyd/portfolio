@@ -609,6 +609,21 @@ export function getCaseStudy(slug: string): CaseStudy | null {
   return CASE_STUDIES[slug] ?? null;
 }
 
+const PROJECT_YEARS: Record<string, string> = {
+  syncrofy: "2025",
+  lighthouse: "2024",
+  "slab-design-system": "2024",
+  acelab: "2024",
+  clay: "2023",
+  calibrator: "2022",
+};
+
+const PROJECT_PLATFORM: Record<string, string> = {
+  clay: "Internal Tooling",
+  lighthouse: "Internal Tooling",
+  calibrator: "Internal Tooling",
+};
+
 function workItemsForSlugs(slugs: readonly string[]): SelectedWorkItem[] {
   return slugs.map((slug) => {
     const study = CASE_STUDIES[slug];
@@ -620,9 +635,9 @@ function workItemsForSlugs(slugs: readonly string[]): SelectedWorkItem[] {
       title: study.hero.subtitle,
       client: clientLine || study.hero.title,
       description: study.hero.description,
-      year: "2024",
+      year: PROJECT_YEARS[slug] ?? "2024",
       scope: study.meta.areas.split(",")[0]?.trim() ?? "Product Design",
-      platform: "Web",
+      platform: PROJECT_PLATFORM[slug] ?? "B2B",
       href: `/work/${slug}`,
       image: study.cardImage,
       themeColor: study.themeColor,
