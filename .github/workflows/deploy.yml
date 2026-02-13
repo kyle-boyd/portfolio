@@ -31,6 +31,7 @@ jobs:
           NODE_ENV: production
           # Empty base path for custom domain (kyleboyd.design); omit to use /portfolio for username.github.io/portfolio/
           NEXT_PUBLIC_BASE_PATH: ""
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
 
       - uses: actions/upload-pages-artifact@v3
         with:
