@@ -37,7 +37,7 @@ export function AboutSection({
             {narrative.map((line, i) => (
               <p
                 key={i}
-                className="text-base text-zinc-50"
+                className="text-base text-[#555555]"
                 style={{ fontFamily: "var(--font-outfit)" }}
               >
                 {line}
@@ -47,7 +47,7 @@ export function AboutSection({
 
           {imageSrc && (
             <figure className="shrink-0 space-y-2 sm:w-[280px]">
-              <div className="overflow-hidden rounded-xl border border-white/10 bg-zinc-950/70">
+              <div className="overflow-hidden rounded-xl border border-neutral-200 bg-neutral-100">
                 <Image
                   src={imageSrc}
                   alt={imageCaption ?? "Personal photo"}
@@ -58,7 +58,7 @@ export function AboutSection({
                 />
               </div>
               {imageCaption && (
-                <figcaption className="text-sm text-zinc-400">
+                <figcaption className="text-sm text-[#666666]">
                   {imageCaption}
                 </figcaption>
               )}
@@ -69,7 +69,7 @@ export function AboutSection({
         {/* Career timeline */}
         <div>
           <p
-            className="mb-6 text-lg font-extralight text-zinc-400/90 sm:text-xl"
+            className="mb-6 text-lg font-extralight text-[#666666] sm:text-xl"
             style={{ fontFamily: "var(--font-crimson)" }}
           >
             Though I&apos;ve been working for a while, here&apos;s a quick glance
@@ -79,19 +79,19 @@ export function AboutSection({
             {career.map((entry, i) => (
               <div
                 key={i}
-                className="group flex flex-col gap-1 rounded-[18px] border border-white/10 bg-zinc-950/70 px-5 py-4 shadow-[0_18px_60px_rgba(0,0,0,0.5)] transition-colors hover:bg-zinc-900/60 hover:border-white/15"
+                className="group flex flex-col gap-1 rounded-[18px] border border-neutral-200 bg-white px-5 py-4 shadow-sm transition-colors hover:bg-neutral-50 hover:shadow-md"
               >
-                <span className="text-[0.65rem] font-medium tracking-[0.14em] text-zinc-400">
+                <span className="text-[0.65rem] font-medium tracking-[0.14em] text-[#666666]">
                   {entry.year}
                   {entry.isCurrent ? " - Present" : ""}
                 </span>
                 <span
-                  className="text-base font-semibold text-zinc-100 sm:text-lg"
+                  className="text-base font-semibold text-[#222222] sm:text-lg"
                   style={{ fontFamily: "var(--font-crimson)" }}
                 >
                   {entry.role}
                 </span>
-                <span className="text-sm text-zinc-300/90">{entry.company}</span>
+                <span className="text-sm text-[#555555]">{entry.company}</span>
               </div>
             ))}
           </div>
@@ -101,18 +101,18 @@ export function AboutSection({
         {operatingSystem && operatingSystem.length > 0 && (
           <div>
             <p
-              className="mb-6 text-lg font-extralight text-zinc-400/90 sm:text-xl"
+              className="mb-6 text-lg font-extralight text-[#666666] sm:text-xl"
               style={{ fontFamily: "var(--font-crimson)" }}
             >
               How I work
             </p>
             <ul
-              className="space-y-3 text-base text-zinc-50"
+              className="space-y-3 text-base text-[#555555]"
               style={{ fontFamily: "var(--font-outfit)" }}
             >
               {operatingSystem.map((line, i) => (
                 <li key={i} className="flex gap-3">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-500" />
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#888888]" />
                   {line}
                 </li>
               ))}

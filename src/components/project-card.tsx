@@ -69,25 +69,25 @@ export function ProjectCard({
   };
 
   const cardClassName =
-    "group relative flex flex-col gap-5 rounded-[24px] bg-zinc-950/70 p-0 shadow-[0_18px_60px_rgba(0,0,0,0.85)] transition-shadow duration-300 cursor-pointer";
+    "group relative flex flex-col gap-5 rounded-[24px] bg-white p-0 shadow-md ring-1 ring-neutral-200/80 transition-shadow duration-300 cursor-pointer hover:shadow-lg";
 
   const content = (
     <>
       {/* Type pills row (right aligned) */}
       <div className="relative z-10 flex justify-end">
-        <div className="flex flex-wrap gap-2 text-[0.65rem] font-medium tracking-[0.16em] text-zinc-200/90">
+        <div className="flex flex-wrap gap-2 text-[0.65rem] font-medium tracking-[0.16em] text-[#666666]">
           {scope && (
-            <span className="rounded-md bg-zinc-900/70 px-3 py-1">
+            <span className="rounded-md bg-neutral-100 px-3 py-1">
               {scope}
             </span>
           )}
           {platform && (
-            <span className="rounded-md bg-zinc-900/70 px-3 py-1">
+            <span className="rounded-md bg-neutral-100 px-3 py-1">
               {platform}
             </span>
           )}
           {year && (
-            <span className="rounded-md bg-zinc-900/70 px-3 py-1">
+            <span className="rounded-md bg-neutral-100 px-3 py-1">
               {year}
             </span>
           )}
@@ -97,7 +97,7 @@ export function ProjectCard({
       {/* Image card */}
       <div
         ref={outerGlowRef}
-        className="relative rounded-[18px] bg-zinc-900/60 p-2 border border-white/15 transition-[box-shadow] duration-300"
+        className="relative rounded-[18px] bg-neutral-100 p-2 border border-neutral-200 transition-[box-shadow] duration-300"
         style={{
           boxShadow: `0 0 0 0 rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0)`,
         }}
@@ -114,21 +114,21 @@ export function ProjectCard({
             alt={title}
             loading="lazy"
             decoding="async"
-            className="project-card-image size-full object-cover transition-all duration-300 border border-white/15 rounded-[10px] group-hover:scale-105"
+            className="project-card-image size-full object-cover transition-all duration-300 border border-neutral-200 rounded-[10px] group-hover:scale-[1.02]"
           />
         </div>
       </div>
 
       {/* Description block */}
-      <div className="relative z-10 space-y-2 pt-1 text-zinc-200">
+      <div className="relative z-10 space-y-2 pt-1 text-[#222222]">
         <h3
-          className="text-[24px] font-semibold text-zinc-50"
+          className="text-[20px] font-semibold text-[#222222] sm:text-[24px]"
           style={{ fontFamily: "var(--font-crimson)" }}
         >
           {title}
         </h3>
-        <p className="text-xs text-zinc-300/90">{client}</p>
-        <p className="text-[16px] text-zinc-300/70">{description}</p>
+        <p className="text-xs text-[#666666]">{client}</p>
+        <p className="text-[16px] text-[#555555]">{description}</p>
       </div>
     </>
   );

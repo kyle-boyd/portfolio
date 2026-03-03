@@ -65,7 +65,7 @@ export function MiniProjectCard({
   const sharedProps = {
     ref: cardRef,
     className:
-      "group relative flex flex-col gap-3 rounded-[16px] bg-zinc-950/70 p-0 shadow-[0_12px_40px_rgba(0,0,0,0.85)] transition-shadow duration-300 cursor-pointer",
+      "group relative flex flex-col gap-3 rounded-[16px] bg-white p-0 shadow-md ring-1 ring-neutral-200/80 transition-shadow duration-300 cursor-pointer hover:shadow-lg",
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,
   };
@@ -75,7 +75,7 @@ export function MiniProjectCard({
       {/* Image card */}
       <div
         ref={outerGlowRef}
-        className="relative rounded-[12px] bg-zinc-900/60 p-1.5 border border-white/15 transition-[box-shadow] duration-300"
+        className="relative rounded-[12px] bg-neutral-100 p-1.5 border border-neutral-200 transition-[box-shadow] duration-300"
         style={{
           boxShadow: `0 0 0 0 rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0)`,
         }}
@@ -90,20 +90,20 @@ export function MiniProjectCard({
           <img
             src={assetUrl(image)}
             alt={title}
-            className="project-card-image size-full object-cover transition-all duration-300 border border-white/15 rounded-[8px] group-hover:scale-105"
+            className="project-card-image size-full object-cover transition-all duration-300 border border-neutral-200 rounded-[8px] group-hover:scale-[1.02]"
           />
         </div>
       </div>
 
       {/* Description block */}
-      <div className="relative z-10 space-y-1 pt-0.5 text-zinc-200">
+      <div className="relative z-10 space-y-1 pt-0.5 text-[#222222]">
         <h3
-          className="text-[20px] font-semibold text-zinc-50 leading-tight"
+          className="text-[17px] font-semibold text-[#222222] leading-tight sm:text-[20px]"
           style={{ fontFamily: "var(--font-crimson)" }}
         >
           {title}
         </h3>
-        <p className="text-xs text-zinc-300/90 line-clamp-2 leading-snug">{description}</p>
+        <p className="text-xs text-[#555555] line-clamp-2 leading-snug">{description}</p>
       </div>
     </>
   );

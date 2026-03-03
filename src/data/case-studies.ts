@@ -42,6 +42,33 @@ export type CaseStudyImpact = {
   measurement?: string;
 };
 
+/** Single layer for box-shadow–style glow (cursor subtly shifts x/y) */
+export type HeroGlowShadowLayer = {
+  color: string;
+  x?: number;
+  y?: number;
+  blur: number;
+  spread?: number;
+};
+
+/** Per-project hero glow on main page: gradient or box-shadow style, cursor-reactive */
+export type HeroGlowConfig = {
+  /** Primary glow color (hex or rgb); used when `colors` / `boxShadows` are not set */
+  color?: string;
+  /** Optional second color for gradient; ignored when `colors` or `boxShadows` is set. */
+  colorEnd?: string;
+  /** Multiple gradient stops; overrides color/colorEnd when set. Ignored when `boxShadows` is set. */
+  colors?: string[];
+  /** Multi-layer box-shadow glow (e.g. white center + colored sides). Ignored when `backgroundGradient` is set. */
+  boxShadows?: HeroGlowShadowLayer[];
+  /** CSS linear-gradient (or other background-image) for a softer glow; overrides boxShadows when set. */
+  backgroundGradient?: string;
+  /** Blur/size of glow in px (gradient mode); default ~120 */
+  size?: number;
+  /** Glow transparency 0–1; default 0.4 */
+  opacity?: number;
+};
+
 export type CaseStudy = {
   slug: string;
   hero: {
@@ -51,6 +78,8 @@ export type CaseStudy = {
   };
   /** Optional hero image shown above the first section (e.g. above Context) */
   heroImage?: string;
+  /** Optional glow config for main page hero; uses themeColor if omitted */
+  heroGlow?: HeroGlowConfig;
   meta: CaseStudyMeta;
   cardImage: string;
   themeColor: string;
@@ -69,6 +98,15 @@ export type SelectedWorkItem = {
   image: string;
   themeColor: string;
   slug: string;
+  heroGlow?: HeroGlowConfig;
+  /** Short title for main-page TOC only; project pages keep full title */
+  tocTitle?: string;
+  /** Short subtitle for main-page TOC only */
+  tocSubtitle?: string;
+  /** Grayscale SVG path for TOC icon (default state) */
+  iconGrayscale?: string;
+  /** Color SVG path for TOC icon (hover/active state) */
+  iconColor?: string;
 };
 
 const CASE_STUDIES: Record<string, CaseStudy> = {
@@ -152,6 +190,11 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
     },
     cardImage: "/images/projectimages/lhmain.avif",
     themeColor: "#64748b",
+    heroGlow: {
+      backgroundGradient:
+        "linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(66, 133, 245, 0.65) 20%, rgba(53, 168, 82, 0.6) 40%, rgba(250, 189, 5, 0.55) 60%, rgba(234, 69, 55, 0.6) 80%, rgba(0, 0, 0, 0) 100%)",
+      opacity: 0.65,
+    },
     impact: {
       measurement: "50% faster report generation measured via planner time-tracking and feedback over the first 3 months post-launch.",
     },
@@ -237,6 +280,11 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
     },
     cardImage: "/images/projectimages/acelabmain.avif",
     themeColor: "#475569",
+    heroGlow: {
+      backgroundGradient:
+        "linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(140, 160, 220, 0.7) 20%, rgba(180, 140, 190, 0.65) 40%, rgba(230, 150, 160, 0.6) 60%, rgba(220, 130, 150, 0.6) 80%, rgba(160, 150, 210, 0.7) 100%)",
+      opacity: 0.6,
+    },
     sections: [
       {
         title: "Context",
@@ -344,6 +392,11 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
     },
     cardImage: "/images/projectimages/acelabdsmain.avif",
     themeColor: "#71717a",
+    heroGlow: {
+      backgroundGradient:
+        "linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(140, 160, 220, 0.7) 20%, rgba(180, 140, 190, 0.65) 40%, rgba(230, 150, 160, 0.6) 60%, rgba(220, 130, 150, 0.6) 80%, rgba(160, 150, 210, 0.7) 100%)",
+      opacity: 0.6,
+    },
     impact: {
       outcomes: [
         { title: "Streamlined handoff.", body: "Design tokens and shared components reduced design–engineering back-and-forth and sped up implementation." },
@@ -454,6 +507,11 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
     },
     cardImage: "/images/projectimages/syncrofymain.avif",
     themeColor: "#526070",
+    heroGlow: {
+      backgroundGradient:
+        "linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(140, 160, 220, 0.7) 20%, rgba(180, 140, 190, 0.65) 40%, rgba(230, 150, 160, 0.6) 60%, rgba(220, 130, 150, 0.6) 80%, rgba(160, 150, 210, 0.7) 100%)",
+      opacity: 0.6,
+    },
     sections: [
       {
         image: "/images/syncrofyimages/FT Transfers.jpg",
@@ -603,6 +661,96 @@ export const FEATURED_SLUGS = [
   "acelab",
 ] as const;
 
+/** Exactly 4 projects for main page hero + left TOC */
+export const MAIN_PAGE_SLUGS = [
+  "syncrofy",
+  "lighthouse",
+  "acelab",
+  "slab-design-system",
+] as const;
+
+/** Short names for main page TOC only; project pages keep full hero titles */
+const MAIN_PAGE_TOC_DISPLAY: Record<
+  (typeof MAIN_PAGE_SLUGS)[number],
+  { title: string; subtitle: string }
+> = {
+  syncrofy: { title: "Syncrofy", subtitle: "File transfer visibility platform" },
+  lighthouse: { title: "Lighthouse", subtitle: "Real estate planning tools" },
+  acelab: { title: "Acelab", subtitle: "Materials management platform" },
+  "slab-design-system": {
+    title: "Design System Work",
+    subtitle: "Building scalable systems",
+  },
+};
+
+/** TOC icon SVGs: grayscale (default) and color (hover/active). Add your SVG files under public/images/toc/ */
+const MAIN_PAGE_TOC_ICONS: Record<
+  (typeof MAIN_PAGE_SLUGS)[number],
+  { grayscale: string; color: string }
+> = {
+  syncrofy: {
+    grayscale: "/images/toc/syncrofy-grayscale.svg",
+    color: "/images/toc/syncrofy-color.svg",
+  },
+  lighthouse: {
+    grayscale: "/images/toc/lighthouse-grayscale.svg",
+    color: "/images/toc/lighthouse-color.svg",
+  },
+  acelab: {
+    grayscale: "/images/toc/acelab-grayscale.svg",
+    color: "/images/toc/acelab-color.svg",
+  },
+  "slab-design-system": {
+    grayscale: "/images/toc/design-system-grayscale.svg",
+    color: "/images/toc/design-system-color.svg",
+  },
+};
+
+/** Short title + subtitle for header Work flyout (all case studies) */
+const WORK_FLYOUT_DISPLAY: Record<
+  (typeof CASE_STUDY_SLUGS)[number],
+  { title: string; subtitle: string }
+> = {
+  syncrofy: { title: "Syncrofy", subtitle: "File transfer visibility platform" },
+  lighthouse: { title: "Lighthouse", subtitle: "Real estate planning tools" },
+  "slab-design-system": {
+    title: "Design System Work",
+    subtitle: "Building scalable systems",
+  },
+  acelab: { title: "Acelab", subtitle: "Materials management platform" },
+  clay: { title: "Clay", subtitle: "Office renovation hub for Google" },
+  calibrator: { title: "Calibrator", subtitle: "Construction cost comparison" },
+};
+
+export type WorkFlyoutItem = {
+  slug: string;
+  href: string;
+  title: string;
+  subtitle: string;
+  iconGrayscale?: string;
+  iconColor?: string;
+  image: string;
+};
+
+export function getWorkFlyoutItems(): WorkFlyoutItem[] {
+  return MAIN_PAGE_SLUGS.map((slug) => {
+    const study = CASE_STUDIES[slug];
+    const display = WORK_FLYOUT_DISPLAY[slug];
+    const icons = MAIN_PAGE_TOC_ICONS[slug as (typeof MAIN_PAGE_SLUGS)[number]];
+    return {
+      slug,
+      href: `/work/${slug}`,
+      title: display.title,
+      subtitle: display.subtitle,
+      ...(icons && {
+        iconGrayscale: icons.grayscale,
+        iconColor: icons.color,
+      }),
+      image: study.cardImage,
+    };
+  });
+}
+
 export type CaseStudySlug = (typeof CASE_STUDY_SLUGS)[number];
 
 export function getCaseStudy(slug: string): CaseStudy | null {
@@ -624,12 +772,16 @@ const PROJECT_PLATFORM: Record<string, string> = {
   calibrator: "Internal Tooling",
 };
 
-function workItemsForSlugs(slugs: readonly string[]): SelectedWorkItem[] {
+function workItemsForSlugs(
+  slugs: readonly string[],
+  getImage?: (study: CaseStudy) => string
+): SelectedWorkItem[] {
   return slugs.map((slug) => {
     const study = CASE_STUDIES[slug];
     const clientLine = [study.meta.client, study.meta.employer]
       .filter(Boolean)
       .join(" / ");
+    const image = getImage ? getImage(study) : study.cardImage;
     return {
       slug,
       title: study.hero.title,
@@ -639,16 +791,36 @@ function workItemsForSlugs(slugs: readonly string[]): SelectedWorkItem[] {
       scope: study.meta.areas.split(",")[0]?.trim() ?? "Product Design",
       platform: PROJECT_PLATFORM[slug] ?? "B2B",
       href: `/work/${slug}`,
-      image: study.cardImage,
+      image,
       themeColor: study.themeColor,
+      heroGlow: study.heroGlow,
     };
   });
 }
 
 export function getSelectedWork(): SelectedWorkItem[] {
-  return workItemsForSlugs(CASE_STUDY_SLUGS);
+  return workItemsForSlugs(MAIN_PAGE_SLUGS);
 }
 
 export function getFeaturedWork(): SelectedWorkItem[] {
   return workItemsForSlugs(FEATURED_SLUGS);
+}
+
+export function getMainPageWork(): SelectedWorkItem[] {
+  const items = workItemsForSlugs(MAIN_PAGE_SLUGS, (s) => s.heroImage ?? s.cardImage);
+  return items.map((item) => {
+    const tocDisplay = MAIN_PAGE_TOC_DISPLAY[item.slug as (typeof MAIN_PAGE_SLUGS)[number]];
+    const tocIcons = MAIN_PAGE_TOC_ICONS[item.slug as (typeof MAIN_PAGE_SLUGS)[number]];
+    return {
+      ...item,
+      ...(tocDisplay && {
+        tocTitle: tocDisplay.title,
+        tocSubtitle: tocDisplay.subtitle,
+      }),
+      ...(tocIcons && {
+        iconGrayscale: tocIcons.grayscale,
+        iconColor: tocIcons.color,
+      }),
+    };
+  });
 }

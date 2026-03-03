@@ -11,14 +11,14 @@ export function WritingArticle({ date, title, description, href }: WritingArticl
   const content = (
     <div className="space-y-2">
       <h3
-        className={`text-lg font-semibold text-zinc-100 leading-tight ${
-          href ? "transition-colors group-hover:text-zinc-50" : ""
+        className={`text-lg font-semibold text-[#222222] leading-tight ${
+          href ? "transition-colors group-hover:text-[#333333]" : ""
         }`}
         style={{ fontFamily: "var(--font-crimson)" }}
       >
         {title}
       </h3>
-      <p className="text-sm text-zinc-400 leading-relaxed">
+      <p className="text-sm text-[#666666] leading-relaxed">
         {description}
       </p>
     </div>
@@ -26,11 +26,11 @@ export function WritingArticle({ date, title, description, href }: WritingArticl
 
   const wrapperClassName = `group flex-1 rounded-lg px-4 py-3 transition-colors ${
     href ? "cursor-pointer" : ""
-  } hover:bg-zinc-900/60`;
+  } hover:bg-neutral-50`;
 
   return (
-    <div className="flex gap-8 items-center">
-      <div className="flex w-24 flex-shrink-0 items-center self-stretch text-sm text-zinc-400">
+    <div className="flex gap-3 items-center sm:gap-8">
+      <div className="flex w-16 flex-shrink-0 items-center self-stretch text-sm text-[#666666] sm:w-24">
         {date}
       </div>
       {href ? (

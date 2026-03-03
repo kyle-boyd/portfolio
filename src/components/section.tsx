@@ -29,7 +29,7 @@ export function Section({
           : "px-6 py-12 sm:px-10 sm:py-16"
       }
     >
-      <div className="mx-auto max-w-[800px] space-y-8 text-zinc-100">
+      <div className="mx-auto max-w-[800px] space-y-8 text-[#222222]">
         <header
           className={
             heroStyle ? "mt-24 space-y-4" : "space-y-4"
@@ -37,7 +37,7 @@ export function Section({
         >
           <div className="flex items-center justify-between gap-4">
             <h2
-              className="text-[24px] text-zinc-100"
+              className="text-[20px] text-[#222222] sm:text-[24px]"
               style={{ fontFamily: "var(--font-crimson)" }}
             >
               {title}
@@ -45,14 +45,14 @@ export function Section({
             {viewAllHref && (
               <Link
                 href={viewAllHref}
-                className="shrink-0 text-[0.9rem] font-medium text-zinc-400 transition-colors hover:text-zinc-100"
+                className="shrink-0 text-[0.9rem] font-medium text-[#666666] transition-colors hover:text-[#222222]"
               >
                 View All
               </Link>
             )}
           </div>
           {subtitle && (
-            <p className="text-[0.8rem] font-medium tracking-[0.14em] text-zinc-400">
+            <p className="text-[0.8rem] font-medium tracking-[0.14em] text-[#666666]">
               {subtitle}
             </p>
           )}

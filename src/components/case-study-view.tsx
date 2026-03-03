@@ -2,6 +2,7 @@ import { Link } from "next-view-transitions";
 import type { CaseStudy, CaseStudyMeta, CaseStudySection } from "@/data/case-studies";
 import { BeforeAfterImage } from "@/components/before-after-image";
 import { CaseStudyImage } from "@/components/case-study-image";
+import { CaseStudyTOC, type CaseStudyTOCEntry } from "@/components/case-study-toc";
 import { ImageCarousel } from "@/components/image-carousel";
 
 function BodyWithBold({ text }: { text: string }) {
@@ -10,7 +11,7 @@ function BodyWithBold({ text }: { text: string }) {
     <>
       {parts.map((segment, i) =>
         i % 2 === 1 ? (
-          <strong key={i} className="font-semibold text-zinc-100">
+          <strong key={i} className="font-semibold text-[#222222]">
             {segment}
           </strong>
         ) : (
@@ -43,10 +44,10 @@ function MetaGrid({ meta }: { meta: CaseStudyMeta }) {
           className={label === "Team scope" ? "col-span-2 sm:col-span-4" : undefined}
         >
           <div className="space-y-1">
-            <p className="text-sm font-medium tracking-wider text-zinc-400">
+            <p className="text-sm font-medium tracking-wider text-[#888888]">
               {label}
             </p>
-            <p className="text-base font-medium text-zinc-200">{value}</p>
+            <p className="text-base font-medium text-[#555555]">{value}</p>
           </div>
         </div>
       ))}
@@ -145,7 +146,7 @@ function SectionBlock({
     return (
       <section className="pb-4 pt-12 sm:pt-16">
         <h2
-          className="text-[28px] font-semibold leading-tight text-zinc-50 sm:text-[24px]"
+          className="text-[22px] font-semibold leading-tight text-[#222222] sm:text-[28px]"
           style={{ fontFamily: titleFont }}
         >
           {section.title}
@@ -169,7 +170,7 @@ function SectionBlock({
       <div className="space-y-3">
         {!isDesignResponse && section.title && (
           <h3
-            className={`font-semibold text-zinc-50 mt-6 mb-6 ${useOutfitFont ? "text-[18px]" : "text-[24px]"}`}
+            className={`font-semibold text-[#222222] mt-6 mb-6 ${useOutfitFont ? "text-[18px]" : "text-[24px]"}`}
             style={{ fontFamily: titleFont }}
           >
             {section.title}
@@ -183,12 +184,12 @@ function SectionBlock({
           >
             <div className="min-w-0 flex-1 space-y-4">
               <h3
-                className="text-[24px] font-semibold text-zinc-50"
+                className="text-[24px] font-semibold text-[#222222]"
                 style={{ fontFamily: titleFont }}
               >
                 {section.title}
               </h3>
-              <p className="text-base leading-relaxed text-zinc-300 whitespace-pre-line">
+              <p className="text-base leading-relaxed text-[#555555] whitespace-pre-line">
                 <BodyWithBold text={section.body} />
               </p>
             </div>
@@ -201,14 +202,14 @@ function SectionBlock({
                 />
               )}
               {section.caption && (
-                <p className="text-sm text-zinc-400">{section.caption}</p>
+                <p className="text-sm text-[#888888]">{section.caption}</p>
               )}
             </div>
           </div>
         ) : hasProblems ? (
           <>
             {section.intro && (
-              <p className="text-base leading-relaxed text-zinc-300 max-w-[900px]">
+              <p className="text-base leading-relaxed text-[#555555] max-w-[900px]">
                 {section.intro}
               </p>
             )}
@@ -217,8 +218,8 @@ function SectionBlock({
                 <div key={i} className={itemRowClasses}>
                   <ProblemXIcon />
                   <div className="min-w-0 space-y-1">
-                    <p className="font-bold text-zinc-100">{problem.title}</p>
-                    <p className="text-base leading-relaxed text-zinc-300">
+                    <p className="font-bold text-[#222222]">{problem.title}</p>
+                    <p className="text-base leading-relaxed text-[#555555]">
                       {problem.body}
                     </p>
                   </div>
@@ -226,7 +227,7 @@ function SectionBlock({
               ))}
             </div>
             {section.bodyTail && (
-              <p className="text-base leading-relaxed text-zinc-300 max-w-[900px] pt-2">
+              <p className="text-base leading-relaxed text-[#555555] max-w-[900px] pt-2">
                 {section.bodyTail}
               </p>
             )}
@@ -237,8 +238,8 @@ function SectionBlock({
               <div key={i} className={itemRowClasses}>
                 <OutcomeCheckIcon />
                 <div className="min-w-0 space-y-1">
-                  <p className="font-bold text-zinc-100">{outcome.title}</p>
-                  <p className="text-base leading-relaxed text-zinc-300">
+                  <p className="font-bold text-[#222222]">{outcome.title}</p>
+                  <p className="text-base leading-relaxed text-[#555555]">
                     {outcome.body}
                   </p>
                 </div>
@@ -248,36 +249,36 @@ function SectionBlock({
         ) : hasQuotes ? (
           <>
             {section.body && (
-              <p className="text-base leading-relaxed text-zinc-300 whitespace-pre-line max-w-[900px]">
+              <p className="text-base leading-relaxed text-[#555555] whitespace-pre-line max-w-[900px]">
                 <BodyWithBold text={section.body} />
               </p>
             )}
             <div
-              className="space-y-4 rounded-xl bg-zinc-950/50 px-6 py-5 max-w-[900px]"
+              className="space-y-4 rounded-xl bg-neutral-100 px-6 py-5 max-w-[900px]"
               style={{ fontFamily: "var(--font-crimson-pro-light)" }}
             >
               {section.quotes!.map((quote, i) => (
                 <blockquote
                   key={i}
-                  className="text-lg italic leading-relaxed text-zinc-300"
+                  className="text-lg italic leading-relaxed text-[#555555]"
                 >
                   &ldquo;{quote}&rdquo;
                 </blockquote>
               ))}
               {section.quoteAttribution && (
-                <footer className="text-base not-italic text-zinc-400">
+                <footer className="text-base not-italic text-[#888888]">
                   {section.quoteAttribution}
                 </footer>
               )}
             </div>
             {section.bodyTail && (
-              <p className="text-base leading-relaxed text-zinc-300 max-w-[900px] pt-2">
+              <p className="text-base leading-relaxed text-[#555555] max-w-[900px] pt-2">
                 {section.bodyTail}
               </p>
             )}
           </>
         ) : (
-          <p className="text-base leading-relaxed text-zinc-300 whitespace-pre-line max-w-[900px]">
+          <p className="text-base leading-relaxed text-[#555555] whitespace-pre-line max-w-[900px]">
             <BodyWithBold text={section.body} />
           </p>
         )}
@@ -310,7 +311,7 @@ function SectionBlock({
               />
             ) : null}
             {section.caption && (
-              <p className="text-sm text-zinc-400">{section.caption}</p>
+              <p className="text-sm text-[#888888]">{section.caption}</p>
             )}
           </div>
         )}
@@ -318,16 +319,24 @@ function SectionBlock({
   );
 }
 
+function buildTOCEntries(sections: CaseStudySection[]): CaseStudyTOCEntry[] {
+  return sections
+    .map((section, i) => ({ id: `section-${i}`, label: section.title }))
+    .filter((entry) => entry.label.trim().length > 0);
+}
+
 export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
   const { hero, meta, sections } = study;
+  const tocEntries = buildTOCEntries(sections);
 
   return (
-    <article className="min-h-screen overflow-x-hidden bg-[#080808] text-zinc-100">
-      <div className="mx-auto max-w-[900px] px-6 pb-24 pt-28 sm:px-10 sm:pt-32">
+    <article className="min-h-screen overflow-x-hidden bg-white text-[#222222]">
+      <CaseStudyTOC entries={tocEntries} />
+      <div className="mx-auto max-w-[900px] px-6 pb-24 pt-28 sm:px-10 sm:pt-32 lg:ml-[220px]">
         {/* Back link */}
         <Link
-          href="/#work"
-          className="mb-12 inline-flex items-center text-xs font-medium tracking-wider text-zinc-400 transition hover:text-zinc-200"
+          href="/"
+          className="mb-12 inline-flex items-center text-xs font-medium tracking-wider text-[#888888] transition hover:text-[#555555]"
         >
           <span className="mr-2">←</span>
           Home
@@ -335,8 +344,14 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
 
         {/* Hero */}
         <header className="space-y-4 pb-0">
+          <p
+            className="mt-16 mb-2 text-sm font-medium uppercase tracking-wider text-[#888888]"
+            style={{ fontFamily: "var(--font-outfit)" }}
+          >
+            {study.slug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")}
+          </p>
           <h1
-            className="my-16 text-[32px] font-semibold leading-tight text-zinc-50"
+            className="my-4 text-[26px] font-semibold leading-tight text-[#222222] sm:text-[32px]"
             style={{ fontFamily: "var(--font-crimson)" }}
           >
             {hero.title}
@@ -344,7 +359,7 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
           {study.impact && (study.impact.outcomes?.length || study.impact.measurement) ? (
             <div className="max-w-[900px] space-y-4">
               <h3
-                className="text-[20px] font-semibold text-zinc-50"
+                className="text-[20px] font-semibold text-[#222222]"
                 style={{ fontFamily: "var(--font-crimson)" }}
               >
                 Impact & measurement
@@ -354,8 +369,8 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
                   {study.impact.outcomes.map((outcome, i) => (
                     <div key={i} className={itemRowClasses}>
                       <div className="min-w-0 space-y-1">
-                        <p className="font-bold text-zinc-100">{outcome.title}</p>
-                        <p className="text-base leading-relaxed text-zinc-300">
+                        <p className="font-bold text-[#222222]">{outcome.title}</p>
+                        <p className="text-base leading-relaxed text-[#555555]">
                           {outcome.body}
                         </p>
                       </div>
@@ -364,7 +379,7 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
                 </div>
               )}
               {study.impact.measurement && (
-                <p className="py-6 text-sm text-zinc-400">
+                <p className="py-6 text-sm text-[#666666]">
                   <em>{study.impact.measurement}</em>
                 </p>
               )}
@@ -373,13 +388,13 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
         </header>
 
         {/* Meta */}
-        <div className="border-t border-white/10 py-8">
+        <div className="border-t border-neutral-200 py-8">
           <MetaGrid meta={meta} />
         </div>
 
         {/* Hero image (optional, above first section) */}
         {study.heroImage && (
-          <div className="border-t border-white/10 py-8">
+          <div className="border-t border-neutral-200 py-8">
             <CaseStudyImage
               src={study.heroImage}
               alt={study.hero.title}
@@ -413,7 +428,8 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
             return (
               <div
                 key={i}
-                className={showTopDivider ? "border-t border-white/10" : undefined}
+                id={`section-${i}`}
+                className={showTopDivider ? "border-t border-neutral-200" : undefined}
               >
                 <SectionBlock
                   section={section}
@@ -433,7 +449,7 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
           <div className="mt-16 flex justify-end">
             <Link
               href={`/work/${nextProject.slug}`}
-              className="inline-flex items-center text-sm font-medium tracking-wider text-zinc-400 transition hover:text-zinc-200"
+              className="inline-flex items-center text-sm font-medium tracking-wider text-[#888888] transition hover:text-[#555555]"
             >
               Go to next project ({nextProject.title})
               <span className="ml-2">→</span>
