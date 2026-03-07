@@ -321,8 +321,9 @@ function SectionBlock({
 
 function buildTOCEntries(sections: CaseStudySection[]): CaseStudyTOCEntry[] {
   return sections
-    .map((section, i) => ({ id: `section-${i}`, label: section.title }))
-    .filter((entry) => entry.label.trim().length > 0);
+    .map((section, i) => ({ id: `section-${i}`, label: section.title, subsection: section.subsection }))
+    .filter((entry) => !entry.subsection && entry.label.trim().length > 0)
+    .map(({ id, label }) => ({ id, label }));
 }
 
 export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {

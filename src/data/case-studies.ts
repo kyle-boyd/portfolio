@@ -208,7 +208,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       {
         image: "/images/lighthouse/lhtpp.avif",
         caption: "Existing tool that Google planners use (Sheets)",
-        title: "Background (Spreadsheet mania)",
+        title: "Background",
         body: "Currently Google models their hundreds of millions of square feet of global office space and millions of employees in a collection of Google Sheets files. The global group of planners who are modeling supply and demand scenarios to study long-term requirements of office space needed a more streamlined, consistent, and fast approach. Pain points included: infinitely configurable (no guardrails), lack of automation (tedious, manual process), no data hierarchy and minimal organization, and no filtering available.",
       },
       {
@@ -218,12 +218,17 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         body: "With two primary goals—streamlining modeling processes and improving data visualization—I took the following approach: Mapped Existing Pain Points by conducting user research with Google planners to understand the workflow and prioritize solutions. Simplified Operations by designing a logical set of operations to enable consistent forecasting and scenario modeling. Crafted Visual Hierarchy & Feedback so interfaces highlighted data relationships, recent changes, and high-level insights at a glance.",
       },
       {
+        title: "Solution",
+        body: "",
+      },
+      {
         image: "/images/lighthouse/lhdataheirarchy.avif",
         caption: "Clear data hierarchy",
         title: "Clear data hierarchy",
         body: "Organized structure for complex planning data.",
         layout: "design-response",
         imagePosition: "right",
+        subsection: true,
       },
       {
         image: "/images/lighthouse/lhfiltering.avif",
@@ -232,6 +237,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         body: "Flexible filtering and sorting at multiple levels.",
         layout: "design-response",
         imagePosition: "left",
+        subsection: true,
       },
       {
         image: "/images/lighthouse/lhlogic.avif",
@@ -240,6 +246,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         body: "Intuitive customization without complexity.",
         layout: "design-response",
         imagePosition: "right",
+        subsection: true,
       },
       {
         image: "/images/lighthouse/lhvisualcues.avif",
@@ -248,17 +255,18 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         body: "Clear indicators for customizations and changes.",
         layout: "design-response",
         imagePosition: "left",
+        subsection: true,
       },
       {
         image: "/images/lighthouse/lhdesignsystem.avif",
         caption: "Design system components",
-        title: "Design system",
+        title: "Design System",
         body: "I was working within the Google Material design system, with a specific UI overlay on top of the default Material 2 library for REWS products. This system was not fully fleshed out, so throughout the course of development I had to create and manage some additional components. Because of very tight build timelines, all of the components used had to be rigorously consistent with what is available in the existing Angular and React libraries.",
       },
       {
         image: "/images/lighthouse/lhinitial.avif",
         caption: "Prototype showing a user making a forecast growth modification",
-        title: "Impact & results",
+        title: "Results",
         body: "The Lighthouse application introduced several significant improvements: Automated Calculations—blended sharing ratios are now automatically calculated, saving planners up to 50% of their time preparing reports. Enhanced Data Visibility—a toggle feature allows users to easily switch views. Rule-Based Adjustment—users can apply rule-based calculations across multiple periods. Consistent UI Across Regions—a standardized UI improves usability. Upstream Data Integration—direct integration with upstream data sources eliminates manual linking.",
       },
     ],
@@ -293,7 +301,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       {
         image: "/images/acelab_navigation/acelabpreviousnavigation.avif",
         caption: "Legacy navigation varied by view and hid project context",
-        title: "The Problem: Navigation Had Never Scaled",
+        title: "The Problem",
         body: "",
         intro:
           "Through platform audits and internal interviews, I identified four critical friction points:",
@@ -318,7 +326,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       },
       {
         image: "/images/acelab_navigation/acelaboptions.avif",
-        title: "Research: Validating Direction Without a Research Budget",
+        title: "Research",
         body: "After creating a handful of concepts, the team initially favored a direction inspired by consumer products—clean, minimal, lots of whitespace.\n\nI conducted 8 conversational interviews with architects across firm types and sizes, from boutique residential practices to global firms like Gensler. Some were existing Acelab users; others were contacts in my network I recruited to get outside perspective.",
       },
       {
@@ -336,11 +344,11 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       {
         image: "/images/acelab_navigation/acelabsidenavoverlay.avif",
         caption: "Exploring hybrid navigation: top nav + persistent sidebar",
-        title: "Strategy: Advocating for Professional Density",
+        title: "Strategy",
         body: "For professional users managing complex projects across multiple stakeholders, visual minimalism can signal superficiality. Dense, well-organized navigation communicates capability. This created a design tension: the CEO prioritized global search (which worked best in a clean top nav), while feature discoverability needed persistent, visible structure.\n\nThe solution: **Hybrid navigation.** This gave both priorities room to breathe while respecting how architects actually work.",
       },
       {
-        title: "Execution: Scoping for Impact Within Timeline Constraints",
+        title: "Execution",
         body: "The CEO was pushing to ship features rapidly. A full platform rewrite wasn't feasible. I worked with Engineering to define a \"Canvas\" approach: a new global navigation frame that wrapped existing page content.\n\nThis allowed us to:\n\n• Ship high-impact navigation changes without blocking feature development\n• Establish a design system foundation that could be applied incrementally to inner pages\n• Validate the mental model (hybrid nav, persistent project context) before deeper refactoring",
       },
       {
@@ -367,7 +375,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
           new: "/images/acelab_navigation/acelabnew.avif",
         },
         caption: "Final navigation: project selector with numbers, stable sidebar",
-        title: "Outcome: Durability and Business Impact",
+        title: "Outcome",
         body: "The navigation and design system launched in late 2024 and remain in use today. Internal feedback validated the approach:",
         quotes: [
           "We've gotten lots of good feedback on the UX/UI and overall flow... the designs have gotten very good feedback, and I hope you are proud of them.",
@@ -530,11 +538,12 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         caption: "",
         title: "Why it mattered",
         body: "Syncrofy File Transfer (FT) handles 200,000+ enterprise data transfers per hour. My goal was to turn an opaque \"black box\" of activity into a system users could quickly search, understand, and trust.",
+        subsection: true,
       },
       {
         image: "/images/syncrofyimages/old-filters.avif",
         caption: "Legacy platform exposed 50+ filter options on the transfer list",
-        title: "The Problem: When Flexibility Becomes Friction",
+        title: "The Problem",
         body: "Syncrofy's legacy platform exposed 50+ filter options on the transfer list. This approach maximized theoretical flexibility, allowing power users to slice data by nearly every available facet. It also has the potential to be overly complex.\n\nNew and non-technical users were overwhelmed by the sheer number of options. Even experienced users had to scroll through long lists to perform simple tasks. Instead of empowering users, the interface increased cognitive load and slowed down workflows.\n\nThe underlying assumption was clear: More options equal more power. But that assumption hadn't been re-examined in years.",
       },
       {
@@ -542,6 +551,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         caption: "Core problems from legacy audits and stakeholder alignment",
         title: "The Core Problems",
         body: "",
+        subsection: true,
         intro:
           "Through legacy audits and stakeholder alignment, four core problems emerged:",
         problems: [
@@ -566,12 +576,12 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
           "These issues were especially risky given the constraints: a CEO-driven vision, minimal research opportunity, and a single \"Big Bang\" release.",
       },
       {
-        title: "Insight: Designing for Reality, Not Possibility",
+        title: "The Insight",
         body:
           "To ground decisions, I conducted a forensic audit of legacy usage data. The result reframed the entire problem:\n\n**99% of all filter interactions were concentrated in just 8 filters.**\n\nThe issue wasn’t lack of capability — it was how that capability was presented. The design challenge became one of risk management: How do we dramatically reduce complexity for most users without removing power or violating leadership constraints?",
       },
       {
-        title: "The Solution: A focused default experience that also works for power users",
+        title: "The Solution",
         body: "",
       },
       {
@@ -581,6 +591,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         body: "A usage audit revealed that 99% of filter interactions came from just 8 facets. I surfaced these as the default filter set and moved the remaining options behind an expandable, searchable drawer. This dramatically reduced visual complexity without removing capability.\n\nPreserving Power Without Sacrificing Clarity — To support expert workflows, all filters remained accessible via grouped categories and type-ahead search. This respected leadership concerns while creating a structured mental model for advanced use cases.",
         layout: "design-response",
         imagePosition: "right",
+        subsection: true,
       },
       {
         image: "/images/syncrofyimages/typeahead.avif",
@@ -589,6 +600,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         body: "All filters remained accessible via grouped categories and type-ahead search. This respected the 100% parity mandate while creating a structured mental model for advanced use cases.",
         layout: "design-response",
         imagePosition: "left",
+        subsection: true,
       },
       {
         image: "/images/syncrofyimages/filterchips.avif",
@@ -597,6 +609,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         body: "I introduced filter chips that surface active filters directly in the workspace. These act as visual breadcrumbs, preserving orientation and control. A \"Clear All\" affordance provides a fast return to baseline.",
         layout: "design-response",
         imagePosition: "right",
+        subsection: true,
       },
       {
         image: "/images/syncrofyimages/crossfilter.avif",
@@ -605,6 +618,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         body: "I redesigned dashboards to support explicit global filters, supported by a clear precedence model between global, tile-level, and temporary filters. This eliminated ambiguity and made dashboard state predictable and saveable.",
         layout: "design-response",
         imagePosition: "left",
+        subsection: true,
       },
       {
         image: "/images/syncrofyimages/Filter Data.jpg",
@@ -701,8 +715,8 @@ const MAIN_PAGE_TOC_ICONS: Record<
     color: "/images/toc/acelab-color.svg",
   },
   "slab-design-system": {
-    grayscale: "/images/toc/design-system-grayscale.svg",
-    color: "/images/toc/design-system-color.svg",
+    grayscale: "/images/toc/ds-grayscale.svg",
+    color: "/images/toc/ds-color.svg",
   },
 };
 

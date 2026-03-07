@@ -84,25 +84,14 @@ export function MainPageTOC({
           );
           return (
             <li key={project.slug}>
-              {onIndexChange ? (
-                <button
-                  type="button"
-                  onClick={() => onIndexChange(i)}
-                  onMouseEnter={() => onIndexChange(i)}
-                  className={itemClass}
-                  data-selected={isSelected}
-                >
-                  {content}
-                </button>
-              ) : (
-                <Link
-                  href={`/work/${project.slug}`}
-                  className={itemClass}
-                  data-selected={isSelected}
-                >
-                  {content}
-                </Link>
-              )}
+              <Link
+                href={`/work/${project.slug}`}
+                onMouseEnter={() => onIndexChange?.(i)}
+                className={itemClass}
+                data-selected={isSelected}
+              >
+                {content}
+              </Link>
             </li>
           );
         })}

@@ -55,15 +55,19 @@ export function CaseStudyTOC({ entries }: CaseStudyTOCProps) {
     >
       <ul className="space-y-2">
         {entries.map((entry) => (
-          <li key={entry.id} className="flex items-baseline gap-2">
+          <li key={entry.id} className="flex items-center gap-2">
             <span
-              className={`flex h-1.5 w-1.5 shrink-0 rounded-full ${
-                activeId === entry.id ? "bg-[#222222]" : "bg-[#888888]"
+              className={`flex h-1.5 w-1.5 shrink-0 rounded-full transition-colors ${
+                activeId === entry.id ? "bg-[#222222]" : "bg-transparent"
               }`}
               aria-hidden
             />
             <a
               href={`#${entry.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById(entry.id)?.scrollIntoView({ behavior: "smooth" });
+              }}
               className={`block text-left text-sm transition-colors ${
                 activeId === entry.id
                   ? "font-semibold text-[#222222]"
