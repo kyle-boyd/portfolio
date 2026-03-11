@@ -22,7 +22,7 @@ export function CaseStudyImage({
 
   const wrapper = (
     <div
-      className={`relative overflow-hidden rounded-xl border border-white/15 bg-zinc-900 ${className} ${lightbox ? "cursor-zoom-in" : ""}`}
+      className={`relative overflow-hidden rounded-xl border border-neutral-200 bg-neutral-100 ${className} ${lightbox ? "cursor-zoom-in" : ""}`}
       {...(lightbox && {
         role: "button",
         tabIndex: 0,

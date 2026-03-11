@@ -4,6 +4,11 @@ import { Section } from "@/components/section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
+export const metadata = {
+  title: "Kyle Boyd | Work",
+  description: "Case studies of projects I have worked on.",
+};
+
 export default function WorkPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-white text-[#222222]">

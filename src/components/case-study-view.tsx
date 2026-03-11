@@ -158,7 +158,7 @@ function SectionBlock({
   const sectionPadding = section.subsection
     ? lastSubsection
       ? "pt-2 pb-16"
-      : "py-2"
+      : "pt-2 pb-16"
     : compactBottom
       ? "pt-12 sm:pt-16 pb-8"
       : compactTop
@@ -184,7 +184,7 @@ function SectionBlock({
           >
             <div className="min-w-0 flex-1 space-y-4">
               <h3
-                className="text-[24px] font-semibold text-[#222222]"
+                className="text-[18px] font-semibold text-[#222222]"
                 style={{ fontFamily: titleFont }}
               >
                 {section.title}
@@ -321,7 +321,7 @@ function SectionBlock({
 
 function buildTOCEntries(sections: CaseStudySection[]): CaseStudyTOCEntry[] {
   return sections
-    .map((section, i) => ({ id: `section-${i}`, label: section.title, subsection: section.subsection }))
+    .map((section, i) => ({ id: `section-${i}`, label: section.tocTitle ?? section.title, subsection: section.subsection }))
     .filter((entry) => !entry.subsection && entry.label.trim().length > 0)
     .map(({ id, label }) => ({ id, label }));
 }
@@ -333,7 +333,7 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
   return (
     <article className="min-h-screen overflow-x-hidden bg-white text-[#222222]">
       <CaseStudyTOC entries={tocEntries} />
-      <div className="mx-auto max-w-[900px] px-6 pb-24 pt-28 sm:px-10 sm:pt-32 lg:ml-[220px]">
+      <div className="mx-auto max-w-[900px] px-6 pb-24 pt-28 sm:px-10 sm:pt-32">
         {/* Back link */}
         <Link
           href="/"
