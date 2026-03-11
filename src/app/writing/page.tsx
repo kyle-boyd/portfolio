@@ -4,6 +4,11 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { WritingArticle } from "@/components/writing-article";
 
+export const metadata = {
+  title: "Kyle Boyd | Writing",
+  description: "Writing on design, process, and creative thinking.",
+};
+
 export default function WritingPage() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-white text-[#222222]">

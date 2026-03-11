@@ -73,7 +73,7 @@ export function ImageCarousel({ items: rawItems, className = "" }: ImageCarousel
               <CaseStudyImage
                 src={item.src}
                 alt={item.alt ?? ""}
-                className="shadow-lg max-w-full"
+                className="max-w-full"
                 lightbox
               />
             </div>

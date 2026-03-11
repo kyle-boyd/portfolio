@@ -4,7 +4,7 @@ import { MainPageClient } from "@/components/main-page-client";
 import { getMainPageWork } from "@/data/case-studies";
 
 export const metadata = {
-  title: "Kyle Boyd — Product Designer",
+  title: "Kyle Boyd | Product Portfolio",
   description:
     "Product designer based in Denver, Colorado. Building in product & systems for enterprise solutions.",
 };

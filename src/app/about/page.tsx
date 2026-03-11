@@ -7,7 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 import { assetUrl } from "@/lib/base-path";
 
 export const metadata = {
-  title: "About — Kyle Boyd",
+  title: "Kyle Boyd | About",
   description: "A bit about who I am, my path in design, and how to get in touch.",
 };
 

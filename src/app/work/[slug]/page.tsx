@@ -16,8 +16,12 @@ export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const study = getCaseStudy(slug);
   if (!study) return { title: "Work" };
+  const shortTitle = slug
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
   return {
-    title: `${study.hero.title} | Kyle Boyd`,
+    title: `Kyle Boyd | ${shortTitle}`,
     description: study.hero.description,
   };
 }

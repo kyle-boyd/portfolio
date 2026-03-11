@@ -32,6 +32,8 @@ export type CaseStudySection = {
   quotes?: string[];
   /** Optional attribution shown below quotes (e.g. "— Director of Product") */
   quoteAttribution?: string;
+  /** Short title used in the sidebar TOC only; full title renders on the section heading */
+  tocTitle?: string;
   /** When true, section is a subsection of the previous section (no divider, Outfit title) */
   subsection?: boolean;
 };
@@ -200,7 +202,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
     },
     sections: [
       {
-        image: "/images/lh_vid.gif",
+        image: "/images/lighthouse/lh_vid.gif",
         caption: "Lighthouse application demonstration",
         title: "Overview",
         body: "Lighthouse is a web-based application designed to model all of Google's global office space 10 years into the future. Built to meet the needs of real estate planners and analysts at Google Real Estate and Workplace Services (REWS), it transitions their workflows from a spreadsheet-based system to a more robust and user-friendly web-based platform. The result? Lighthouse enabled 50% faster report generation for the planners and forecasters, transforming how Google manages hundreds of millions of square feet of office space worldwide.",
@@ -208,7 +210,8 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       {
         image: "/images/lighthouse/lhtpp.avif",
         caption: "Existing tool that Google planners use (Sheets)",
-        title: "Background",
+        title: "Background (Spreadsheet mania)",
+        tocTitle: "Background",
         body: "Currently Google models their hundreds of millions of square feet of global office space and millions of employees in a collection of Google Sheets files. The global group of planners who are modeling supply and demand scenarios to study long-term requirements of office space needed a more streamlined, consistent, and fast approach. Pain points included: infinitely configurable (no guardrails), lack of automation (tedious, manual process), no data hierarchy and minimal organization, and no filtering available.",
       },
       {
@@ -219,40 +222,40 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       },
       {
         title: "Solution",
-        body: "",
+        body: "Lighthouse gives planners a structured, purpose-built environment where forecasting is faster, customizations are visible, and consistency is built in. The result is less time wrestling with data and more confidence in the output.",
       },
       {
         image: "/images/lighthouse/lhdataheirarchy.avif",
-        caption: "Clear data hierarchy",
+        caption: "Nested structure showing how regional and local office data is organized",
         title: "Clear data hierarchy",
-        body: "Organized structure for complex planning data.",
+        body: "Organized structure for complex planning data.\n\nSo planners always know where they are in a dataset spanning hundreds of offices across dozens of regions.",
         layout: "design-response",
         imagePosition: "right",
         subsection: true,
       },
       {
         image: "/images/lighthouse/lhfiltering.avif",
-        caption: "Global and local filtering",
+        caption: "Filters can be applied simultaneously at the global and row level",
         title: "Global & local filtering",
-        body: "Flexible filtering and sorting at multiple levels.",
+        body: "Flexible filtering and sorting at multiple levels.\n\nLess time reconstructing views, more time actually analyzing the data that matters.",
         layout: "design-response",
         imagePosition: "left",
         subsection: true,
       },
       {
         image: "/images/lighthouse/lhlogic.avif",
-        caption: "Simple customization logic",
+        caption: "Rule-based logic applied across multiple forecast periods",
         title: "Simple & powerful logic",
-        body: "Intuitive customization without complexity.",
+        body: "Intuitive customization without complexity.\n\nGuardrails keep forecasts consistent across teams — without taking control away from the people who know the data best.",
         layout: "design-response",
         imagePosition: "right",
         subsection: true,
       },
       {
         image: "/images/lighthouse/lhvisualcues.avif",
-        caption: "Visual cues for customizations",
+        caption: "Indicators highlighting active customizations and recent edits",
         title: "Visual cues",
-        body: "Clear indicators for customizations and changes.",
+        body: "Clear indicators for customizations and changes.\n\nPlanners can review, audit, and hand off work with confidence — no more hunting for what changed or why.",
         layout: "design-response",
         imagePosition: "left",
         subsection: true,
@@ -266,7 +269,8 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       {
         image: "/images/lighthouse/lhinitial.avif",
         caption: "Prototype showing a user making a forecast growth modification",
-        title: "Results",
+        title: "Impact & results",
+        tocTitle: "Results",
         body: "The Lighthouse application introduced several significant improvements: Automated Calculations—blended sharing ratios are now automatically calculated, saving planners up to 50% of their time preparing reports. Enhanced Data Visibility—a toggle feature allows users to easily switch views. Rule-Based Adjustment—users can apply rule-based calculations across multiple periods. Consistent UI Across Regions—a standardized UI improves usability. Upstream Data Integration—direct integration with upstream data sources eliminates manual linking.",
       },
     ],
@@ -279,7 +283,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       description:
         "When I joined Acelab, my mandate was simple: \"Update the UI.\" Within weeks, I'd identified a deeper problem: the navigation architecture hadn't scaled with the product. Users couldn't find features. Internal teams didn't know certain tools existed. I pitched, and shipped, a complete navigation overhaul that helped establish product-market fit, contributing to Acelab's $13.5M Series A funding.",
     },
-    heroImage: "/images/acelab_navigation/acelabhero.avif",
+    heroImage: "/images/projectimages/acelabmain.avif",
     meta: {
       role: "Lead UX Designer · ~3 months · Launch late 2024",
       employer: "Acelab",
@@ -301,7 +305,8 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       {
         image: "/images/acelab_navigation/acelabpreviousnavigation.avif",
         caption: "Legacy navigation varied by view and hid project context",
-        title: "The Problem",
+        title: "The Problem: Navigation Had Never Scaled",
+        tocTitle: "The Problem",
         body: "",
         intro:
           "Through platform audits and internal interviews, I identified four critical friction points:",
@@ -326,7 +331,8 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       },
       {
         image: "/images/acelab_navigation/acelaboptions.avif",
-        title: "Research",
+        title: "Research: Validating Direction Without a Research Budget",
+        tocTitle: "Research",
         body: "After creating a handful of concepts, the team initially favored a direction inspired by consumer products—clean, minimal, lots of whitespace.\n\nI conducted 8 conversational interviews with architects across firm types and sizes, from boutique residential practices to global firms like Gensler. Some were existing Acelab users; others were contacts in my network I recruited to get outside perspective.",
       },
       {
@@ -344,11 +350,13 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       {
         image: "/images/acelab_navigation/acelabsidenavoverlay.avif",
         caption: "Exploring hybrid navigation: top nav + persistent sidebar",
-        title: "Strategy",
+        title: "Strategy: Advocating for Professional Density",
+        tocTitle: "Strategy",
         body: "For professional users managing complex projects across multiple stakeholders, visual minimalism can signal superficiality. Dense, well-organized navigation communicates capability. This created a design tension: the CEO prioritized global search (which worked best in a clean top nav), while feature discoverability needed persistent, visible structure.\n\nThe solution: **Hybrid navigation.** This gave both priorities room to breathe while respecting how architects actually work.",
       },
       {
-        title: "Execution",
+        title: "Execution: Scoping for Impact Within Timeline Constraints",
+        tocTitle: "Execution",
         body: "The CEO was pushing to ship features rapidly. A full platform rewrite wasn't feasible. I worked with Engineering to define a \"Canvas\" approach: a new global navigation frame that wrapped existing page content.\n\nThis allowed us to:\n\n• Ship high-impact navigation changes without blocking feature development\n• Establish a design system foundation that could be applied incrementally to inner pages\n• Validate the mental model (hybrid nav, persistent project context) before deeper refactoring",
       },
       {
@@ -375,7 +383,8 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
           new: "/images/acelab_navigation/acelabnew.avif",
         },
         caption: "Final navigation: project selector with numbers, stable sidebar",
-        title: "Outcome",
+        title: "Outcome: Durability and Business Impact",
+        tocTitle: "Outcome",
         body: "The navigation and design system launched in late 2024 and remain in use today. Internal feedback validated the approach:",
         quotes: [
           "We've gotten lots of good feedback on the UX/UI and overall flow... the designs have gotten very good feedback, and I hope you are proud of them.",
@@ -527,7 +536,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         title: "Context",
         body: "Enterprise data exchange is often invisible until something breaks. Syncrofy FT exists to act as a GPS for digital mail, giving business and technical users real-time visibility into every transfer across systems.\n\nThe project was driven by a CEO-led vision for a single, massive release. This meant no room for iterative research or incremental analytics. Furthermore, the CEO mandated 100% feature parity, meaning no filters could be removed, regardless of how rarely they were used. Timeline: 4 months, single-release redesign. Partners: CEO, Director of Product, PM, Engineering.",
         images: [
-          "/images/syncrofyimages/hero1.avif",
+          "/images/syncrofyimages/hero-1.avif",
           "/images/syncrofyimages/hero-2.avif",
           "/images/syncrofyimages/hero-3.avif",
           "/images/syncrofyimages/hero-4.avif",
@@ -543,7 +552,8 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       {
         image: "/images/syncrofyimages/old-filters.avif",
         caption: "Legacy platform exposed 50+ filter options on the transfer list",
-        title: "The Problem",
+        title: "The Problem: When Flexibility Becomes Friction",
+        tocTitle: "The Problem",
         body: "Syncrofy's legacy platform exposed 50+ filter options on the transfer list. This approach maximized theoretical flexibility, allowing power users to slice data by nearly every available facet. It also has the potential to be overly complex.\n\nNew and non-technical users were overwhelmed by the sheer number of options. Even experienced users had to scroll through long lists to perform simple tasks. Instead of empowering users, the interface increased cognitive load and slowed down workflows.\n\nThe underlying assumption was clear: More options equal more power. But that assumption hadn't been re-examined in years.",
       },
       {
@@ -576,12 +586,14 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
           "These issues were especially risky given the constraints: a CEO-driven vision, minimal research opportunity, and a single \"Big Bang\" release.",
       },
       {
-        title: "The Insight",
+        title: "Insight: Designing for Reality, Not Possibility",
+        tocTitle: "The Insight",
         body:
           "To ground decisions, I conducted a forensic audit of legacy usage data. The result reframed the entire problem:\n\n**99% of all filter interactions were concentrated in just 8 filters.**\n\nThe issue wasn’t lack of capability — it was how that capability was presented. The design challenge became one of risk management: How do we dramatically reduce complexity for most users without removing power or violating leadership constraints?",
       },
       {
-        title: "The Solution",
+        title: "The Solution: A focused default experience that also works for power users",
+        tocTitle: "The Solution",
         body: "",
       },
       {

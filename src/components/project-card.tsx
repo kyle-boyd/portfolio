@@ -104,7 +104,7 @@ export function ProjectCard({
       >
         <div
           ref={innerGlowRef}
-          className="relative aspect-[2880/1808] overflow-hidden rounded-[10px] transition-[box-shadow] duration-300"
+          className="relative overflow-hidden rounded-[10px] transition-[box-shadow] duration-300"
           style={{
             boxShadow: `0 0 0 0 rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0)`,
           }}
@@ -114,7 +114,7 @@ export function ProjectCard({
             alt={title}
             loading="lazy"
             decoding="async"
-            className="project-card-image size-full object-cover transition-all duration-300 border border-neutral-200 rounded-[10px] group-hover:scale-[1.02]"
+            className="project-card-image block w-full h-auto transition-all duration-300 border border-neutral-200 rounded-[10px] group-hover:scale-[1.02]"
           />
         </div>
       </div>
