@@ -65,7 +65,7 @@ export function MiniProjectCard({
   const sharedProps = {
     ref: cardRef,
     className:
-      "group relative flex flex-col gap-3 rounded-[16px] bg-white p-0 shadow-md ring-1 ring-neutral-200/80 transition-shadow duration-300 cursor-pointer hover:shadow-lg",
+      "group relative flex flex-col gap-3 rounded-[16px] bg-surface-bg p-0 shadow-md ring-1 ring-neutral-200/80 transition-shadow duration-300 cursor-pointer hover:shadow-lg",
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,
   };
@@ -96,14 +96,14 @@ export function MiniProjectCard({
       </div>
 
       {/* Description block */}
-      <div className="relative z-10 space-y-1 pt-0.5 text-[#222222]">
+      <div className="relative z-10 space-y-1 pt-0.5 text-text-primary">
         <h3
-          className="text-[17px] font-semibold text-[#222222] leading-tight sm:text-[20px]"
+          className="text-[17px] font-semibold text-text-primary leading-tight sm:text-[20px]"
           style={{ fontFamily: "var(--font-crimson)" }}
         >
           {title}
         </h3>
-        <p className="text-xs text-[#555555] line-clamp-2 leading-snug">{description}</p>
+        <p className="text-xs text-text-secondary line-clamp-2 leading-snug">{description}</p>
       </div>
     </>
   );

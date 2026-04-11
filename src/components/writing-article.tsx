@@ -11,14 +11,14 @@ export function WritingArticle({ date, title, description, href }: WritingArticl
   const content = (
     <div className="space-y-2">
       <h3
-        className={`text-lg font-semibold text-[#222222] leading-tight ${
-          href ? "transition-colors group-hover:text-[#333333]" : ""
+        className={`text-lg font-semibold text-text-primary leading-tight ${
+          href ? "transition-colors group-hover:text-text-hover" : ""
         }`}
         style={{ fontFamily: "var(--font-crimson)" }}
       >
         {title}
       </h3>
-      <p className="text-sm text-[#666666] leading-relaxed">
+      <p className="text-sm text-text-muted leading-relaxed">
         {description}
       </p>
     </div>
@@ -30,7 +30,7 @@ export function WritingArticle({ date, title, description, href }: WritingArticl
 
   return (
     <div className="flex gap-3 items-center sm:gap-8">
-      <div className="flex w-16 flex-shrink-0 items-center self-stretch text-sm text-[#666666] sm:w-24">
+      <div className="flex w-16 flex-shrink-0 items-center self-stretch text-sm text-text-muted sm:w-24">
         {date}
       </div>
       {href ? (

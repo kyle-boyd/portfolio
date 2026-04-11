@@ -6,11 +6,12 @@ import { Link } from "next-view-transitions";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { ThemeToggle } from "./theme-toggle";
 
 const activeClass =
-  "text-[#222222] font-medium";
+  "text-text-primary font-medium";
 const inactiveClass =
-  "text-[#666666] transition hover:text-[#333333]";
+  "text-text-muted transition hover:text-text-hover";
 
 const moreLinks = [
   { href: "/playground", label: "Playground" },
@@ -80,7 +81,7 @@ export function SiteHeader() {
       <div className="pointer-events-auto">
         <Link
           href="/"
-          className="text-base font-medium text-[#222222] hover:text-[#333333]"
+          className="text-base font-medium text-text-primary hover:text-text-hover"
         >
           Kyle Boyd
         </Link>
@@ -115,7 +116,7 @@ export function SiteHeader() {
           </button>
 
           {workOpen && (
-            <div className="absolute left-0 top-full z-50 mt-2 min-w-[280px] rounded-2xl border border-neutral-100 bg-[#FAFAFA] py-2 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+            <div className="absolute left-0 top-full z-50 mt-2 min-w-[280px] rounded-2xl border border-neutral-100 bg-surface-elevated py-2 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
               <nav className="px-2 py-1" aria-label="Work case studies">
                 {workFlyoutItems.map((item) => {
                   const isItemActive = pathname === item.href;
@@ -126,7 +127,7 @@ export function SiteHeader() {
                       className={`group flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-colors hover:bg-neutral-200/70 ${isItemActive ? "bg-neutral-200/70" : ""}`}
                     >
                       <div
-                        className={`relative shrink-0 overflow-hidden rounded-lg ${item.iconGrayscale && item.iconColor ? "flex h-14 w-14 items-center justify-center border border-neutral-200 bg-white" : "h-14 w-14 border border-neutral-200 bg-neutral-200"}`}
+                        className={`relative shrink-0 overflow-hidden rounded-lg ${item.iconGrayscale && item.iconColor ? "flex h-14 w-14 items-center justify-center border border-neutral-200 bg-surface-bg" : "h-14 w-14 border border-neutral-200 bg-neutral-200"}`}
                       >
                         {item.iconGrayscale && item.iconColor ? (
                           <div className="relative h-8 w-8">
@@ -154,10 +155,10 @@ export function SiteHeader() {
                         )}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-semibold text-[#222222]">
+                        <p className="truncate text-sm font-semibold text-text-primary">
                           {item.title}
                         </p>
-                        <p className="truncate text-xs text-[#666666]">
+                        <p className="truncate text-xs text-text-muted">
                           {item.subtitle}
                         </p>
                       </div>
@@ -187,6 +188,8 @@ export function SiteHeader() {
           About
         </Link>
 
+        <ThemeToggle />
+
         <div ref={moreRef} className="relative sm:hidden">
           <button
             onClick={() => setMoreOpen((prev) => !prev)}
@@ -207,12 +210,12 @@ export function SiteHeader() {
           </button>
 
           {moreOpen && (
-            <div className="absolute right-0 top-full mt-2 min-w-[10rem] rounded-lg border border-neutral-200 bg-white py-1 shadow-lg">
+            <div className="absolute right-0 top-full mt-2 min-w-[10rem] rounded-lg border border-neutral-200 bg-surface-bg py-1 shadow-lg">
               {moreLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`block px-4 py-2 text-sm ${isActive(link.href) ? "font-medium text-[#222222]" : "text-[#666666] hover:bg-neutral-50 hover:text-[#333333]"}`}
+                  className={`block px-4 py-2 text-sm ${isActive(link.href) ? "font-medium text-text-primary" : "text-text-muted hover:bg-neutral-50 hover:text-text-hover"}`}
                 >
                   {link.label}
                 </Link>

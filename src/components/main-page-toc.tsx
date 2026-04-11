@@ -16,7 +16,7 @@ function TOCIcon({ project, isSelected }: { project: SelectedWorkItem; isSelecte
 
   if (hasSvgIcons) {
     return (
-      <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-neutral-200 bg-white">
+      <div className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-neutral-200 bg-surface-bg">
         <div className="relative h-8 w-8">
           <img
             src={assetUrl(project.iconGrayscale!)}
@@ -55,7 +55,7 @@ export function MainPageTOC({
 }: MainPageTOCProps) {
   return (
     <nav className="space-y-4" aria-label="Case studies">
-      <h2 className="text-[11px] font-light tracking-wide text-[#222222]">
+      <h2 className="text-[11px] font-light tracking-wide text-text-primary">
         Case studies
       </h2>
       <ul className="space-y-2">
@@ -71,12 +71,12 @@ export function MainPageTOC({
               <div className="min-w-0 flex-1">
                 <p
                   className={`truncate text-sm font-semibold ${
-                    isSelected ? "text-[#222222]" : "text-[#333333]"
+                    isSelected ? "text-text-primary" : "text-text-hover"
                   }`}
                 >
                   {displayTitle}
                 </p>
-                <p className="truncate text-xs text-[#666666]">
+                <p className="truncate text-xs text-text-muted">
                   {displaySubtitle}
                 </p>
               </div>

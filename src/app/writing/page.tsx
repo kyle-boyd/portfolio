@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function WritingPage() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-white text-[#222222]">
+    <div className="relative min-h-screen overflow-hidden bg-surface-bg text-text-primary">
       <div className="relative mx-auto flex min-h-screen max-w-[800px] flex-col pb-16">
         <SiteHeader />
 

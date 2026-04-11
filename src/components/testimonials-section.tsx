@@ -10,17 +10,17 @@ export function TestimonialsSection() {
         {TESTIMONIALS.map((t, i) => (
           <blockquote
             key={i}
-            className="rounded-xl border border-neutral-200 bg-white px-6 py-5 shadow-sm"
+            className="rounded-xl border border-neutral-200 bg-surface-bg px-6 py-5 shadow-sm"
           >
             <p
-              className="text-base italic text-[#555555]"
+              className="text-base italic text-text-secondary"
               style={{ fontFamily: "var(--font-outfit)" }}
             >
               &ldquo;{t.quote}&rdquo;
             </p>
             <footer className="mt-4">
-              <p className="text-sm font-semibold text-[#222222]">{t.name}</p>
-              <p className="text-sm text-[#666666]">
+              <p className="text-sm font-semibold text-text-primary">{t.name}</p>
+              <p className="text-sm text-text-muted">
                 {t.title}
                 {t.company && ` · ${t.company}`}
               </p>

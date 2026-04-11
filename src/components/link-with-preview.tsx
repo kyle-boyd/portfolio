@@ -15,7 +15,7 @@ type LinkWithPreviewProps = {
 
 function LinkedInPreview() {
   return (
-    <div className="relative w-[200px] overflow-hidden rounded-lg bg-white shadow-xl ring-1 ring-zinc-200/80">
+    <div className="relative w-[200px] overflow-hidden rounded-lg bg-surface-bg shadow-xl ring-1 ring-zinc-200/80">
       {/* Banner */}
       <div className="h-12 bg-gradient-to-br from-[#0a66c2] to-[#004182]" />
       <div className="px-3 pb-3 pt-1">
@@ -50,7 +50,7 @@ function LinkedInPreview() {
 
 function ResumePreview() {
   return (
-    <div className="relative w-[180px] overflow-hidden rounded-lg bg-white shadow-xl ring-1 ring-zinc-200/80">
+    <div className="relative w-[180px] overflow-hidden rounded-lg bg-surface-bg shadow-xl ring-1 ring-zinc-200/80">
       <div className="border-b border-zinc-200 bg-zinc-50 px-3 py-2">
         <p className="text-xs font-semibold text-zinc-800">Kyle Boyd</p>
         <p className="text-[10px] text-zinc-500">Product Designer · Resume</p>
@@ -108,7 +108,7 @@ export function LinkWithPreview({ href, label, variant, className = "" }: LinkWi
         href={href}
         target={href.startsWith("http") || href.endsWith(".pdf") ? "_blank" : undefined}
         rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-        className={`inline-block underline decoration-[#888888] underline-offset-4 transition-colors hover:text-[#222222] hover:decoration-[#555555] ${className}`}
+        className={`inline-block underline decoration-text-faint underline-offset-4 transition-colors hover:text-text-primary hover:decoration-text-secondary ${className}`}
         style={{ fontFamily: "var(--font-outfit)" }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

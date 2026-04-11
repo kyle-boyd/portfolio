@@ -2,24 +2,57 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 @import "tailwindcss";
 
-:root {
+:root,
+[data-theme="light"] {
   --background: #ffffff;
   --foreground: #171717;
+  --text-primary: #222222;
+  --text-hover: #333333;
+  --text-secondary: #555555;
+  --text-muted: #666666;
+  --text-faint: #888888;
+  --surface-bg: #ffffff;
+  --surface-elevated: #fafafa;
   --font-outfit: "Outfit", system-ui, sans-serif;
+}
+
+[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --text-primary: #ededed;
+  --text-hover: #d4d4d4;
+  --text-secondary: #a3a3a3;
+  --text-muted: #8a8a8a;
+  --text-faint: #666666;
+  --surface-bg: #0a0a0a;
+  --surface-elevated: #1a1a1a;
+
+  /* Override Tailwind neutral scale for dark mode */
+  --color-neutral-50: #1a1a1a;
+  --color-neutral-100: #262626;
+  --color-neutral-200: #333333;
+  --color-neutral-300: #404040;
+  --color-neutral-400: #525252;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #a3a3a3;
+  --color-neutral-700: #d4d4d4;
+  --color-neutral-800: #e5e5e5;
+  --color-neutral-900: #f5f5f5;
+  --color-neutral-950: #fafafa;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-text-primary: var(--text-primary);
+  --color-text-hover: var(--text-hover);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-faint: var(--text-faint);
+  --color-surface-bg: var(--surface-bg);
+  --color-surface-elevated: var(--surface-elevated);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {

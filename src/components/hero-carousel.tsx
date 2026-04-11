@@ -90,11 +90,11 @@ export function HeroCarousel({
           top: mousePos.y + OFFSET_Y,
         }}
       >
-        <div className="max-w-xs rounded-2xl bg-white/60 px-4 py-3 shadow-lg ring-1 ring-black/8 backdrop-blur-md">
-          <p className="text-[13px] font-semibold leading-snug text-[#222222]">
+        <div className="max-w-xs rounded-2xl bg-surface-elevated/60 px-4 py-3 shadow-lg ring-1 ring-black/8 backdrop-blur-md">
+          <p className="text-[13px] font-semibold leading-snug text-text-primary">
             {current.tocTitle ?? current.title}
           </p>
-          <p className="mt-1 text-[12px] leading-relaxed text-[#555555]">
+          <p className="mt-1 text-[12px] leading-relaxed text-text-secondary">
             {current.description}
           </p>
         </div>

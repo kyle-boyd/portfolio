@@ -37,7 +37,7 @@ export function AboutSection({
             {narrative.map((line, i) => (
               <p
                 key={i}
-                className="text-base text-[#555555]"
+                className="text-base text-text-secondary"
                 style={{ fontFamily: "var(--font-outfit)" }}
               >
                 {line}
@@ -58,7 +58,7 @@ export function AboutSection({
                 />
               </div>
               {imageCaption && (
-                <figcaption className="text-sm text-[#666666]">
+                <figcaption className="text-sm text-text-muted">
                   {imageCaption}
                 </figcaption>
               )}
@@ -69,7 +69,7 @@ export function AboutSection({
         {/* Career timeline */}
         <div>
           <p
-            className="mb-6 text-lg font-extralight text-[#666666] sm:text-xl"
+            className="mb-6 text-lg font-extralight text-text-muted sm:text-xl"
             style={{ fontFamily: "var(--font-crimson)" }}
           >
             Though I&apos;ve been working for a while, here&apos;s a quick glance
@@ -79,19 +79,19 @@ export function AboutSection({
             {career.map((entry, i) => (
               <div
                 key={i}
-                className="group flex flex-col gap-1 rounded-[18px] border border-neutral-200 bg-white px-5 py-4 shadow-sm transition-colors hover:bg-neutral-50 hover:shadow-md"
+                className="group flex flex-col gap-1 rounded-[18px] border border-neutral-200 bg-surface-bg px-5 py-4 shadow-sm transition-colors hover:bg-neutral-50 hover:shadow-md"
               >
-                <span className="text-[0.65rem] font-medium tracking-[0.14em] text-[#666666]">
+                <span className="text-[0.65rem] font-medium tracking-[0.14em] text-text-muted">
                   {entry.year}
                   {entry.isCurrent ? " - Present" : ""}
                 </span>
                 <span
-                  className="text-base font-semibold text-[#222222] sm:text-lg"
+                  className="text-base font-semibold text-text-primary sm:text-lg"
                   style={{ fontFamily: "var(--font-crimson)" }}
                 >
                   {entry.role}
                 </span>
-                <span className="text-sm text-[#555555]">{entry.company}</span>
+                <span className="text-sm text-text-secondary">{entry.company}</span>
               </div>
             ))}
           </div>
@@ -101,18 +101,18 @@ export function AboutSection({
         {operatingSystem && operatingSystem.length > 0 && (
           <div>
             <p
-              className="mb-6 text-lg font-extralight text-[#666666] sm:text-xl"
+              className="mb-6 text-lg font-extralight text-text-muted sm:text-xl"
               style={{ fontFamily: "var(--font-crimson)" }}
             >
               How I work
             </p>
             <ul
-              className="space-y-3 text-base text-[#555555]"
+              className="space-y-3 text-base text-text-secondary"
               style={{ fontFamily: "var(--font-outfit)" }}
             >
               {operatingSystem.map((line, i) => (
                 <li key={i} className="flex gap-3">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#888888]" />
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-text-faint" />
                   {line}
                 </li>
               ))}
