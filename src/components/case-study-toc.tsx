@@ -58,7 +58,7 @@ export function CaseStudyTOC({ entries }: CaseStudyTOCProps) {
           <li key={entry.id} className="flex items-center gap-2">
             <span
               className={`flex h-1.5 w-1.5 shrink-0 rounded-full transition-colors ${
-                activeId === entry.id ? "bg-[#222222]" : "bg-transparent"
+                activeId === entry.id ? "bg-text-primary" : "bg-transparent"
               }`}
               aria-hidden
             />
@@ -70,8 +70,8 @@ export function CaseStudyTOC({ entries }: CaseStudyTOCProps) {
               }}
               className={`block text-left text-sm transition-colors ${
                 activeId === entry.id
-                  ? "font-semibold text-[#222222]"
-                  : "text-[#888888] hover:text-[#555555]"
+                  ? "font-semibold text-text-primary"
+                  : "text-text-faint hover:text-text-secondary"
               }`}
             >
               {entry.label}

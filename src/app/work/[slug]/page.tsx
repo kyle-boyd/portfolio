@@ -46,7 +46,7 @@ export default async function WorkCaseStudyPage({ params }: PageProps) {
       : undefined;
 
   return (
-    <div className="relative min-h-screen bg-white text-[#222222]">
+    <div className="relative min-h-screen bg-surface-bg text-text-primary">
       <SiteHeader />
       <CaseStudyView study={study} nextProject={nextProject} />
       <SiteFooter />

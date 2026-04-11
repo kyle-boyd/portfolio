@@ -69,13 +69,13 @@ export function ProjectCard({
   };
 
   const cardClassName =
-    "group relative flex flex-col gap-5 rounded-[24px] bg-white p-0 shadow-md ring-1 ring-neutral-200/80 transition-shadow duration-300 cursor-pointer hover:shadow-lg";
+    "group relative flex flex-col gap-5 rounded-[24px] bg-surface-bg p-0 shadow-md ring-1 ring-neutral-200/80 transition-shadow duration-300 cursor-pointer hover:shadow-lg";
 
   const content = (
     <>
       {/* Type pills row (right aligned) */}
       <div className="relative z-10 flex justify-end">
-        <div className="flex flex-wrap gap-2 text-[0.65rem] font-medium tracking-[0.16em] text-[#666666]">
+        <div className="flex flex-wrap gap-2 text-[0.65rem] font-medium tracking-[0.16em] text-text-muted">
           {scope && (
             <span className="rounded-md bg-neutral-100 px-3 py-1">
               {scope}
@@ -120,15 +120,15 @@ export function ProjectCard({
       </div>
 
       {/* Description block */}
-      <div className="relative z-10 space-y-2 pt-1 text-[#222222]">
+      <div className="relative z-10 space-y-2 pt-1 text-text-primary">
         <h3
-          className="text-[20px] font-semibold text-[#222222] sm:text-[24px]"
+          className="text-[20px] font-semibold text-text-primary sm:text-[24px]"
           style={{ fontFamily: "var(--font-crimson)" }}
         >
           {title}
         </h3>
-        <p className="text-xs text-[#666666]">{client}</p>
-        <p className="text-[16px] text-[#555555]">{description}</p>
+        <p className="text-xs text-text-muted">{client}</p>
+        <p className="text-[16px] text-text-secondary">{description}</p>
       </div>
     </>
   );

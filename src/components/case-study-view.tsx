@@ -11,7 +11,7 @@ function BodyWithBold({ text }: { text: string }) {
     <>
       {parts.map((segment, i) =>
         i % 2 === 1 ? (
-          <strong key={i} className="font-semibold text-[#222222]">
+          <strong key={i} className="font-semibold text-text-primary">
             {segment}
           </strong>
         ) : (
@@ -44,10 +44,10 @@ function MetaGrid({ meta }: { meta: CaseStudyMeta }) {
           className={label === "Team scope" ? "col-span-2 sm:col-span-4" : undefined}
         >
           <div className="space-y-1">
-            <p className="text-sm font-medium tracking-wider text-[#888888]">
+            <p className="text-sm font-medium tracking-wider text-text-faint">
               {label}
             </p>
-            <p className="text-base font-medium text-[#555555]">{value}</p>
+            <p className="text-base font-medium text-text-secondary">{value}</p>
           </div>
         </div>
       ))}
@@ -146,7 +146,7 @@ function SectionBlock({
     return (
       <section className="pb-4 pt-12 sm:pt-16">
         <h2
-          className="text-[22px] font-semibold leading-tight text-[#222222] sm:text-[28px]"
+          className="text-[22px] font-semibold leading-tight text-text-primary sm:text-[28px]"
           style={{ fontFamily: titleFont }}
         >
           {section.title}
@@ -170,7 +170,7 @@ function SectionBlock({
       <div className="space-y-3">
         {!isDesignResponse && section.title && (
           <h3
-            className={`font-semibold text-[#222222] mt-6 mb-6 ${useOutfitFont ? "text-[18px]" : "text-[24px]"}`}
+            className={`font-semibold text-text-primary mt-6 mb-6 ${useOutfitFont ? "text-[18px]" : "text-[24px]"}`}
             style={{ fontFamily: titleFont }}
           >
             {section.title}
@@ -184,12 +184,12 @@ function SectionBlock({
           >
             <div className="min-w-0 flex-1 space-y-4">
               <h3
-                className="text-[18px] font-semibold text-[#222222]"
+                className="text-[18px] font-semibold text-text-primary"
                 style={{ fontFamily: titleFont }}
               >
                 {section.title}
               </h3>
-              <p className="text-base leading-relaxed text-[#555555] whitespace-pre-line">
+              <p className="text-base leading-relaxed text-text-secondary whitespace-pre-line">
                 <BodyWithBold text={section.body} />
               </p>
             </div>
@@ -202,14 +202,14 @@ function SectionBlock({
                 />
               )}
               {section.caption && (
-                <p className="text-sm text-[#888888]">{section.caption}</p>
+                <p className="text-sm text-text-faint">{section.caption}</p>
               )}
             </div>
           </div>
         ) : hasProblems ? (
           <>
             {section.intro && (
-              <p className="text-base leading-relaxed text-[#555555] max-w-[900px]">
+              <p className="text-base leading-relaxed text-text-secondary max-w-[900px]">
                 {section.intro}
               </p>
             )}
@@ -218,8 +218,8 @@ function SectionBlock({
                 <div key={i} className={itemRowClasses}>
                   <ProblemXIcon />
                   <div className="min-w-0 space-y-1">
-                    <p className="font-bold text-[#222222]">{problem.title}</p>
-                    <p className="text-base leading-relaxed text-[#555555]">
+                    <p className="font-bold text-text-primary">{problem.title}</p>
+                    <p className="text-base leading-relaxed text-text-secondary">
                       {problem.body}
                     </p>
                   </div>
@@ -227,7 +227,7 @@ function SectionBlock({
               ))}
             </div>
             {section.bodyTail && (
-              <p className="text-base leading-relaxed text-[#555555] max-w-[900px] pt-2">
+              <p className="text-base leading-relaxed text-text-secondary max-w-[900px] pt-2">
                 {section.bodyTail}
               </p>
             )}
@@ -238,8 +238,8 @@ function SectionBlock({
               <div key={i} className={itemRowClasses}>
                 <OutcomeCheckIcon />
                 <div className="min-w-0 space-y-1">
-                  <p className="font-bold text-[#222222]">{outcome.title}</p>
-                  <p className="text-base leading-relaxed text-[#555555]">
+                  <p className="font-bold text-text-primary">{outcome.title}</p>
+                  <p className="text-base leading-relaxed text-text-secondary">
                     {outcome.body}
                   </p>
                 </div>
@@ -249,7 +249,7 @@ function SectionBlock({
         ) : hasQuotes ? (
           <>
             {section.body && (
-              <p className="text-base leading-relaxed text-[#555555] whitespace-pre-line max-w-[900px]">
+              <p className="text-base leading-relaxed text-text-secondary whitespace-pre-line max-w-[900px]">
                 <BodyWithBold text={section.body} />
               </p>
             )}
@@ -260,25 +260,25 @@ function SectionBlock({
               {section.quotes!.map((quote, i) => (
                 <blockquote
                   key={i}
-                  className="text-lg italic leading-relaxed text-[#555555]"
+                  className="text-lg italic leading-relaxed text-text-secondary"
                 >
                   &ldquo;{quote}&rdquo;
                 </blockquote>
               ))}
               {section.quoteAttribution && (
-                <footer className="text-base not-italic text-[#888888]">
+                <footer className="text-base not-italic text-text-faint">
                   {section.quoteAttribution}
                 </footer>
               )}
             </div>
             {section.bodyTail && (
-              <p className="text-base leading-relaxed text-[#555555] max-w-[900px] pt-2">
+              <p className="text-base leading-relaxed text-text-secondary max-w-[900px] pt-2">
                 {section.bodyTail}
               </p>
             )}
           </>
         ) : (
-          <p className="text-base leading-relaxed text-[#555555] whitespace-pre-line max-w-[900px]">
+          <p className="text-base leading-relaxed text-text-secondary whitespace-pre-line max-w-[900px]">
             <BodyWithBold text={section.body} />
           </p>
         )}
@@ -311,7 +311,7 @@ function SectionBlock({
               />
             ) : null}
             {section.caption && (
-              <p className="text-sm text-[#888888]">{section.caption}</p>
+              <p className="text-sm text-text-faint">{section.caption}</p>
             )}
           </div>
         )}
@@ -331,13 +331,13 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
   const tocEntries = buildTOCEntries(sections);
 
   return (
-    <article className="min-h-screen overflow-x-hidden bg-white text-[#222222]">
+    <article className="min-h-screen overflow-x-hidden bg-surface-bg text-text-primary">
       <CaseStudyTOC entries={tocEntries} />
       <div className="mx-auto max-w-[900px] px-6 pb-24 pt-28 sm:px-10 sm:pt-32">
         {/* Back link */}
         <Link
           href="/"
-          className="mb-12 inline-flex items-center text-xs font-medium tracking-wider text-[#888888] transition hover:text-[#555555]"
+          className="mb-12 inline-flex items-center text-xs font-medium tracking-wider text-text-faint transition hover:text-text-secondary"
         >
           <span className="mr-2">←</span>
           Home
@@ -346,13 +346,13 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
         {/* Hero */}
         <header className="space-y-4 pb-0">
           <p
-            className="mt-16 mb-2 text-sm font-medium uppercase tracking-wider text-[#888888]"
+            className="mt-16 mb-2 text-sm font-medium uppercase tracking-wider text-text-faint"
             style={{ fontFamily: "var(--font-outfit)" }}
           >
             {study.slug.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")}
           </p>
           <h1
-            className="my-4 text-[26px] font-semibold leading-tight text-[#222222] sm:text-[32px]"
+            className="my-4 text-[26px] font-semibold leading-tight text-text-primary sm:text-[32px]"
             style={{ fontFamily: "var(--font-crimson)" }}
           >
             {hero.title}
@@ -360,7 +360,7 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
           {study.impact && (study.impact.outcomes?.length || study.impact.measurement) ? (
             <div className="max-w-[900px] space-y-4">
               <h3
-                className="text-[20px] font-semibold text-[#222222]"
+                className="text-[20px] font-semibold text-text-primary"
                 style={{ fontFamily: "var(--font-crimson)" }}
               >
                 Impact & measurement
@@ -370,8 +370,8 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
                   {study.impact.outcomes.map((outcome, i) => (
                     <div key={i} className={itemRowClasses}>
                       <div className="min-w-0 space-y-1">
-                        <p className="font-bold text-[#222222]">{outcome.title}</p>
-                        <p className="text-base leading-relaxed text-[#555555]">
+                        <p className="font-bold text-text-primary">{outcome.title}</p>
+                        <p className="text-base leading-relaxed text-text-secondary">
                           {outcome.body}
                         </p>
                       </div>
@@ -380,7 +380,7 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
                 </div>
               )}
               {study.impact.measurement && (
-                <p className="py-6 text-sm text-[#666666]">
+                <p className="py-6 text-sm text-text-muted">
                   <em>{study.impact.measurement}</em>
                 </p>
               )}
@@ -450,7 +450,7 @@ export function CaseStudyView({ study, nextProject }: CaseStudyViewProps) {
           <div className="mt-16 flex justify-end">
             <Link
               href={`/work/${nextProject.slug}`}
-              className="inline-flex items-center text-sm font-medium tracking-wider text-[#888888] transition hover:text-[#555555]"
+              className="inline-flex items-center text-sm font-medium tracking-wider text-text-faint transition hover:text-text-secondary"
             >
               Go to next project ({nextProject.title})
               <span className="ml-2">→</span>

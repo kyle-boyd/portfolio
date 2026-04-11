@@ -3,6 +3,7 @@ import { Crimson_Pro, Crimson_Text, Geist, Geist_Mono, Outfit } from "next/font/
 import Script from "next/script";
 import { ViewTransitions } from "next-view-transitions";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { ThemeProvider } from "@/components/theme-provider";
 import { basePath } from "@/lib/base-path";
 import "./globals.css";
 
@@ -50,7 +51,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${crimsonText.variable} ${crimsonProLight.variable} ${outfit.variable} antialiased`}
       >
@@ -95,9 +103,11 @@ f="XMLHttpRequest",g._w={},g._w[f]=m[f],g._w[s]=m[s],m[s]&&(m[s]=function(){retu
             <GoogleAnalytics measurementId={GA_MEASUREMENT_ID} />
           </>
         )}
-        <ViewTransitions>
-          {children}
-        </ViewTransitions>
+        <ThemeProvider>
+          <ViewTransitions>
+            {children}
+          </ViewTransitions>
+        </ThemeProvider>
       </body>
     </html>
   );

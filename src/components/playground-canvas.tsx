@@ -39,7 +39,7 @@ function CardFace({ project }: { project: Project }) {
   return (
     <div
       ref={cardRef}
-      className="group flex flex-col gap-3 rounded-[16px] bg-white ring-1 ring-neutral-200/80 transition-[box-shadow] duration-300"
+      className="group flex flex-col gap-3 rounded-[16px] bg-surface-bg ring-1 ring-neutral-200/80 transition-[box-shadow] duration-300"
       style={{ boxShadow: SHADOW_DEFAULT }}
       onMouseEnter={() => {
         if (cardRef.current)
@@ -62,14 +62,14 @@ function CardFace({ project }: { project: Project }) {
       </div>
 
       {/* Text */}
-      <div className="space-y-1 px-3 text-[#222222]">
+      <div className="space-y-1 px-3 text-text-primary">
         <h3
           className="text-[18px] font-semibold leading-tight"
           style={{ fontFamily: "var(--font-crimson)" }}
         >
           {project.title}
         </h3>
-        <p className="text-xs text-[#555555] line-clamp-2 leading-snug">
+        <p className="text-xs text-text-secondary line-clamp-2 leading-snug">
           {project.description}
         </p>
       </div>
@@ -81,7 +81,7 @@ function CardFace({ project }: { project: Project }) {
             href={project.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-neutral-100 px-3 py-1.5 text-xs font-medium text-[#444] ring-1 ring-neutral-200 hover:bg-neutral-200 transition-colors"
+            className="inline-flex items-center gap-1.5 rounded-full bg-neutral-100 px-3 py-1.5 text-xs font-medium text-text-secondary ring-1 ring-neutral-200 hover:bg-neutral-200 transition-colors"
             onPointerDown={(e) => e.stopPropagation()}
           >
             Visit
@@ -228,8 +228,8 @@ export function PlaygroundCanvas() {
   );
 
   const dotBg = {
-    backgroundColor: "#ffffff",
-    backgroundImage: "radial-gradient(circle, #e2e2e2 1px, transparent 1px)",
+    backgroundColor: "var(--surface-bg)",
+    backgroundImage: "radial-gradient(circle, var(--color-neutral-200, #e2e2e2) 1px, transparent 1px)",
     backgroundSize: "28px 28px",
   };
 
@@ -241,8 +241,8 @@ export function PlaygroundCanvas() {
           onClick={() => handleFilter(filter)}
           className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-all duration-200 ${
             activeFilter === filter
-              ? "bg-[#222222] text-white shadow-sm"
-              : "bg-white text-[#555555] ring-1 ring-neutral-300 hover:ring-neutral-400 hover:text-[#333333]"
+              ? "bg-text-primary text-white shadow-sm"
+              : "bg-surface-bg text-text-secondary ring-1 ring-neutral-300 hover:ring-neutral-400 hover:text-text-hover"
           }`}
         >
           {filter}
@@ -259,12 +259,12 @@ export function PlaygroundCanvas() {
         <div className="px-6 pt-24 pb-12 sm:px-8 sm:pt-28">
           <div className="text-center mb-8">
             <h1
-              className="text-[24px] leading-tight text-[#222222] sm:text-[28px]"
+              className="text-[24px] leading-tight text-text-primary sm:text-[28px]"
               style={{ fontFamily: "var(--font-crimson)" }}
             >
               Exploration & Side Projects
             </h1>
-            <p className="mt-2 text-[0.75rem] font-medium tracking-[0.14em] uppercase text-[#777777]">
+            <p className="mt-2 text-[0.75rem] font-medium tracking-[0.14em] uppercase text-text-muted">
               Snapshots, explorations, and side-projects.
             </p>
             {filterChips}
@@ -300,12 +300,12 @@ export function PlaygroundCanvas() {
           style={{ top: 108 }}
         >
           <h1
-            className="text-[34px] text-[#222222] leading-tight"
+            className="text-[34px] text-text-primary leading-tight"
             style={{ fontFamily: "var(--font-crimson)" }}
           >
             Exploration & Side Projects
           </h1>
-          <p className="mt-2 text-[0.75rem] font-medium tracking-[0.14em] uppercase text-[#777777]">
+          <p className="mt-2 text-[0.75rem] font-medium tracking-[0.14em] uppercase text-text-muted">
             Snapshots, explorations, and side-projects.
           </p>
           {filterChips}

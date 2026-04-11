@@ -43,7 +43,7 @@ export function MainPageClient({ projects }: MainPageClientProps) {
             themeColor={current?.themeColor ?? "#71717a"}
             className="relative -ml-16 -mb-16 -mt-16 p-2"
           >
-            <div className="h-[1075px] w-[1800px] shrink-0 overflow-hidden rounded-2xl border border-neutral-200 bg-white">
+            <div className="h-[1075px] w-[1800px] shrink-0 overflow-hidden rounded-2xl border border-neutral-200 bg-surface-bg">
               <HeroCarousel
                 projects={projects}
                 currentIndex={currentIndex}

@@ -17,7 +17,7 @@ function ToolLogo({ name, src, href }: (typeof TOOLS)[number]) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex size-12 items-center justify-center rounded-xl border border-neutral-200 bg-white p-2.5 shadow-sm transition-colors hover:bg-neutral-50 hover:shadow-md"
+      className="flex size-12 items-center justify-center rounded-xl border border-neutral-200 bg-surface-bg p-2.5 shadow-sm transition-colors hover:bg-neutral-50 hover:shadow-md"
       title={name}
       aria-label={name}
     >

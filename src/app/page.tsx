@@ -13,7 +13,7 @@ export default function HomePage() {
   const projects = getMainPageWork();
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden text-[#222222]">
+    <div className="relative min-h-screen overflow-x-hidden text-text-primary">
       <SiteHeader />
       <MainPageClient projects={projects} />
       <SiteFooter />
